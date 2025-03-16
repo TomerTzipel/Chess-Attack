@@ -1,0 +1,49 @@
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Slay The Basilisk MonoGame.exe
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Slay The Basilisk MonoGame.deps.json
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Slay The Basilisk MonoGame.runtimeconfig.json
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Slay The Basilisk MonoGame.dll
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Slay The Basilisk MonoGame.pdb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\MonoGame.Framework.dll
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\runtimes\linux-x64\native\libopenal.so.1
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\runtimes\osx\native\libSDL2.dylib
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\runtimes\osx\native\libopenal.1.dylib
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\runtimes\win-x64\native\SDL2.dll
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\runtimes\win-x64\native\soft_oal.dll
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\runtimes\win-x86\native\SDL2.dll
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\runtimes\win-x86\native\soft_oal.dll
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\Slay The Basilisk MonoGame.csproj.AssemblyReference.cache
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\Slay The Basilisk MonoGame.GeneratedMSBuildEditorConfig.editorconfig
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\Slay The Basilisk MonoGame.AssemblyInfoInputs.cache
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\Slay The Basilisk MonoGame.AssemblyInfo.cs
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\Slay The Basilisk MonoGame.csproj.CoreCompileInputs.cache
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\Slay The Basilisk MonoGame.csproj.CopyComplete
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\Slay The Basilisk MonoGame.dll
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\refint\Slay The Basilisk MonoGame.dll
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\Slay The Basilisk MonoGame.pdb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\Slay The Basilisk MonoGame.genruntimeconfig.cache
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\ref\Slay The Basilisk MonoGame.dll
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\Geound.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Fonts\Font.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\UI\Button.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\King.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\KingCD.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\Rook.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\RookCD.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\LightStairs.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\LightTile1.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\LightTile2.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\LightTile3.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\LightTile4.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\LightTile5.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\LightTile6.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\LightTile7.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\Stairs.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\Tile1.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\Tile2.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\Tile3.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\Tile4.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\Tile5.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\Tile6.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\Tile7.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\Chest.xnb

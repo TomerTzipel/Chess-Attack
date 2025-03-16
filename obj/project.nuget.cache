@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "TN0QNaMvUIvw27lDieGzxu5ItK+LCoK/Yo5I2bA2xSqJ6LK1U/qK3G3bH5i4IOIsNhGdZjfYafJu39W0ufxMuQ==",
+  "success": true,
+  "projectFilePath": "D:\\Studies\\Semester C\\OOP\\Slay The Basilisk MonoGame\\Slay The Basilisk MonoGame.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pporp\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\pporp\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+  ],
+  "logs": []
+}
