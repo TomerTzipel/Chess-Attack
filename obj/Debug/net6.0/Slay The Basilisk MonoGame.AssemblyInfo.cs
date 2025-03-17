@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Slay The Basilisk MonoGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9272fb4b7df66ddc8df928f909a3964cbd6478f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07f7c4bb91c698505440834a980b4ce32007759f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Slay The Basilisk MonoGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Slay The Basilisk MonoGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

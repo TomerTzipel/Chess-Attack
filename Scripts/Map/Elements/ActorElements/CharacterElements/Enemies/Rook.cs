@@ -7,13 +7,11 @@ namespace Slay_The_Basilisk_MonoGame
     public class Rook : EnemyElement
     {
         //Change the sprite and stats to rook stats from game data sttaic class
-        public Rook(Point mapPosition) : base(AssetsManager.GetAsset(Asset.Rook),AssetsManager.GetAsset(Asset.RookCD), mapPosition,5f, GameData.RookStats)
-        {
-        }
+        public Rook(Point mapPosition) : base(AssetsManager.GetAsset(Asset.Rook),AssetsManager.GetAsset(Asset.RookCD), mapPosition,5f, GameData.RookStats) { }
 
         protected override List<Direction> CalculateAvailableDirections()
         {
-            List<Direction> availableDirections = new List< Direction >(4);
+            List<Direction> availableDirections = new List<Direction>(4);
 
             if(Point.Distance(_mapPosition,RunManager.PlayerPosition) <= _aggroRange)
             {

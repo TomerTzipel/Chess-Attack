@@ -11,7 +11,15 @@ namespace Slay_The_Basilisk_MonoGame
         private double _currentTime;
         private double _duration; 
         public bool IsActive { get; private set; } = false;
-        public double CompletionPercent { get { return _currentTime / _duration; } }
+        public double CompletionPercent 
+        { 
+            get 
+            {
+                double value;
+                value = (_currentTime / _duration > 1d) ? 1d : _currentTime / _duration;
+                return value;
+            } 
+        }
 
         public event Action OnTimerOver;
 
@@ -29,9 +37,9 @@ namespace Slay_The_Basilisk_MonoGame
             _currentTime += deltaTime;
             if(_currentTime >= _duration)
             {
-                OnTimerOver?.Invoke();
                 IsActive = false;
                 _currentTime = _duration;
+                OnTimerOver?.Invoke();            
             }
         }
     }

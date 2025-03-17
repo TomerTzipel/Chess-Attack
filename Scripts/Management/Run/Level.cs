@@ -40,6 +40,8 @@ namespace Slay_The_Basilisk_MonoGame
             }
 
             LevelIndex = levelIndex;
+
+            
         }
         public void Update(GameTime gameTime)
         {
@@ -47,6 +49,7 @@ namespace Slay_The_Basilisk_MonoGame
             {
                 enemy.Update(gameTime);
             }
+            RunManager.Player.Update(gameTime);
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {

@@ -8,19 +8,20 @@ namespace Slay_The_Basilisk_MonoGame
 {
     public class PlayerElement : CharacterElement
     {
-
-        //Add stats structure
+        //Add inventory stuff boi
         public Point MapPosition
         {
             get { return _mapPosition; }
             set { _mapPosition = value; }
         }
 
-        public PlayerElement() : base(AssetsManager.GetAsset(Asset.Player), AssetsManager.GetAsset(Asset.PlayerCD), new Point(), GameData.PlayerStats) { }
+        public PlayerElement() : base(AssetsManager.GetAsset(Asset.Player), AssetsManager.GetAsset(Asset.PlayerCD), new Point(), GameData.PlayerStats) 
+        {
+            _timer.Start(0.001d);
+        }
         
         public override void Act(Direction direction)
         {
-           
             if (_isOnCooldown) return;
 
             Point targetPosition = new Point(_mapPosition).MovePointInDirection(direction);

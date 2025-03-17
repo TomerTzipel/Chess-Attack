@@ -30,7 +30,7 @@ namespace Slay_The_Basilisk_MonoGame
             _numberOfLevels = numberOfLevels;
 
             //with first level data
-            CurrentLevel = new Level(Player,0);
+            StartLevel(0);
         }
 
         public static void NextLevel()
@@ -43,7 +43,7 @@ namespace Slay_The_Basilisk_MonoGame
             }
 
             //with next level data
-            CurrentLevel = new Level(Player, _levelCount);
+            StartLevel(_levelCount);
         }
 
         public static void EndRun(bool runResult)
@@ -51,11 +51,11 @@ namespace Slay_The_Basilisk_MonoGame
             IsRunActive = false;
             if (runResult)
             {
-                //change scene to victory scene
+                GameManager.ChangeScene(SceneType.MainMenu);
             }
             else
             {
-                //change scene to defeat scene
+                GameManager.ChangeScene(SceneType.MainMenu);
             }
         }
 
@@ -71,6 +71,15 @@ namespace Slay_The_Basilisk_MonoGame
         public static void HandlePlayerInput(object sender, EventArgs args)
         {
             Player.Act(((MovementEventArgs)args).Direction);
+        }
+
+        private static void StartLevel(int levelIndex)
+        {
+            CurrentLevel = new Level(Player, levelIndex);
+            foreach (var enemy in EnemyElement._enemies)
+            {
+                enemy.StartAI();
+            }
         }
 
     }

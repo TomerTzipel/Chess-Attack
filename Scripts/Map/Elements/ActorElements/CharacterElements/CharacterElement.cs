@@ -81,8 +81,9 @@ namespace Slay_The_Basilisk_MonoGame
             base.Draw(gameTime, spriteBatch);
 
             int rectangleHeight = (int)((double)_cooldownSprite.Height * _timer.CompletionPercent);
-
-            spriteBatch.Draw(_cooldownSprite, WorldPosition, new Rectangle(0, 0, _cooldownSprite.Width, rectangleHeight), Color.White);
+            int Y = (int)((double)ElementSize * _timer.CompletionPercent);
+            Y = ElementSize - Y;
+            spriteBatch.Draw(_cooldownSprite, WorldPosition + new Vector2(0,Y), new Rectangle(0, Y, _cooldownSprite.Width, rectangleHeight), Color.White,0f, new Vector2(0, 0),Vector2.One,SpriteEffects.None,0f);
         }
 
         private void HandleTimerOver()

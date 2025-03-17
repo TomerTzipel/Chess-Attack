@@ -25,13 +25,17 @@ namespace Slay_The_Basilisk_MonoGame
             _timer.OnTimerOver += AttemptToAct;
         }
 
-     
         public override void Update(GameTime gameTime)
         {
             if (_timer.IsActive)
             {
                 _timer.Tick(gameTime.ElapsedGameTime.TotalSeconds);
             }
+        }
+
+        public void StartAI()
+        {
+            AttemptToAct();
         }
 
         private void AttemptToAct()
@@ -42,6 +46,7 @@ namespace Slay_The_Basilisk_MonoGame
             {
                 int chosenIndex = RNG.RandomIndex(availableDirections.Count);
                 Direction chosenDirection = availableDirections[chosenIndex];
+                availableDirections.Remove(chosenDirection);
                 Act(chosenDirection);
             }
 
@@ -56,7 +61,7 @@ namespace Slay_The_Basilisk_MonoGame
             Point targetPosition = new Point(_mapPosition).MovePointInDirection(direction);
             MapElement elementInDirection = RunManager.CurrentLevel.Map.ElementAt(targetPosition);
 
-            if (elementInDirection == null) return;
+            if (elementInDirection == null || elementInDirection is IObstacle) return;
 
             if (elementInDirection is EmptyElement)
             {

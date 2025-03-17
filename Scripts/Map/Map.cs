@@ -155,7 +155,8 @@ namespace Slay_The_Basilisk_MonoGame
 
                     _tileMap[i, j].Draw(gameTime, spriteBatch);
 
-                    if(_dataMap[i, j] is IMyDrawable drawable) drawable.Draw(gameTime, spriteBatch);   
+                    if(_dataMap[i, j] is IMyDrawable drawable) drawable.Draw(gameTime, spriteBatch);
+                   
                 }
             }
         }
