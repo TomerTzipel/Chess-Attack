@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 namespace Slay_The_Basilisk_MonoGame
 {
+    public enum Difficulity
+    {
+        Easy,Normal,Hard
+    }
+
     public static class RunManager
     {
         public static Level CurrentLevel { get; private set; }
@@ -19,6 +24,16 @@ namespace Slay_The_Basilisk_MonoGame
 
         public static bool IsRunActive { get; set; } = false;
         public static Point PlayerPosition { get { return Player.MapPosition; } }
+        public static Difficulity CurrentDifficulity 
+        { 
+            get 
+            {
+                int completionPercent = MathUtil.GetPercent(_levelCount, _numberOfLevels);
+                if(completionPercent < 30) return Difficulity.Easy;
+                if(completionPercent < 70) return Difficulity.Normal;
+                return Difficulity.Hard;
+            } 
+        }
         public static void StartRun(int numberOfLevels)
         {
             IsRunActive = true;

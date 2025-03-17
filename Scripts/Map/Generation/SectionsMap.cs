@@ -48,9 +48,9 @@ namespace Slay_The_Basilisk_MonoGame
                 {
                     if (section.Type != SectionType.Inner) continue;
 
-                    float chance = ((float)numberOfSectionsToAllocate / (_numberOfInnerSections - 2))*100;
+                    int chance = MathUtil.GetPercent(numberOfSectionsToAllocate, _numberOfInnerSections - 2);  //((float)numberOfSectionsToAllocate / (_numberOfInnerSections - 2))*100;
 
-                    if (RNG.RollChance((int)chance))
+                    if (MathUtil.RollChance(chance))
                     {
                         section.Type = type;
                         count++;
@@ -68,8 +68,8 @@ namespace Slay_The_Basilisk_MonoGame
         }
         private void GenerateStartSection()
         {
-            int x = RNG.RandomIndex(_size);
-            int y = RNG.RandomIndex(_size);
+            int x = MathUtil.RandomIndex(_size);
+            int y = MathUtil.RandomIndex(_size);
             StartSectionPosition = new Point(x, y);
             GenerateSectionAt(StartSectionPosition, SectionType.Start);
         }
@@ -165,7 +165,7 @@ namespace Slay_The_Basilisk_MonoGame
 
             while (directions.Count > 0)
             {
-                chosenDirectionIndex = RNG.RandomIndex(directions.Count);
+                chosenDirectionIndex = MathUtil.RandomIndex(directions.Count);
                 chosenDirection = directions[chosenDirectionIndex];
 
                 Point directedSectionPosition = new Point(sectionPosition);
@@ -222,7 +222,7 @@ namespace Slay_The_Basilisk_MonoGame
 
         private bool DecideIfToContinueFromSection()
         {
-            return RNG.RollChance(RNG.CONTINUE_CHANCE);
+            return MathUtil.RollChance(MathUtil.CONTINUE_CHANCE);
         }
 
         private bool ChooseDirection(Point sectionPosition,out Direction direction)
@@ -241,7 +241,7 @@ namespace Slay_The_Basilisk_MonoGame
 
             while (directions.Count > 0)
             {
-                chosenDirectionIndex = RNG.RandomIndex(directions.Count);
+                chosenDirectionIndex = MathUtil.RandomIndex(directions.Count);
                 chosenDirection = directions.ElementAt(chosenDirectionIndex);
                 isDirectionAvailable = CheckDirection(sectionPosition, chosenDirection);
                 if (isDirectionAvailable)

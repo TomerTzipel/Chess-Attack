@@ -8,6 +8,11 @@ using System.Threading.Tasks;
 
 namespace Slay_The_Basilisk_MonoGame
 {
+
+    public enum EnemyType
+    {
+        Bishop,Rook,Queen
+    }
     public abstract class EnemyElement : CharacterElement
     {
         public static List<EnemyElement> _enemies = new List<EnemyElement>(8);
@@ -44,7 +49,7 @@ namespace Slay_The_Basilisk_MonoGame
 
             while (!_isOnCooldown && availableDirections.Count > 0)
             {
-                int chosenIndex = RNG.RandomIndex(availableDirections.Count);
+                int chosenIndex = MathUtil.RandomIndex(availableDirections.Count);
                 Direction chosenDirection = availableDirections[chosenIndex];
                 availableDirections.Remove(chosenDirection);
                 Act(chosenDirection);

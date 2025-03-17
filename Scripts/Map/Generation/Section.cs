@@ -1,5 +1,8 @@
 ﻿
 
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace Slay_The_Basilisk_MonoGame
 {
     public enum SectionType
@@ -76,11 +79,7 @@ namespace Slay_The_Basilisk_MonoGame
             Point mapPosition = MapPosition + new Point(Size / 2, Size / 2);
             SectionLayout[Size / 2, Size / 2] = new Chest(mapPosition);
         }
-        private void GenerateEnemySectionLayout()
-        {
-            Point mapPosition = MapPosition + new Point(Size / 2, Size / 2);
-            SectionLayout[Size / 2, Size / 2] = new Queen(mapPosition);
-        }
+        
         private void GenerateExitSectionLayout()
         {
             Point mapPosition = MapPosition + new Point(Size / 2, Size / 2);
@@ -90,6 +89,113 @@ namespace Slay_The_Basilisk_MonoGame
         {
             SectionLayout[Size / 2, Size / 2] = RunManager.Player;
             RunManager.Player.MapPosition = MapPosition + new Point(Size / 2, Size / 2);
+        }
+        private void GenerateEnemySectionLayout()
+        {
+            Stack<EnemyType> enemies = null;
+            switch (RunManager.CurrentDifficulity)
+            {
+                case Difficulity.Easy:
+                    enemies = GenerateEasyEnemySectionLayout();
+                    break;
+                case Difficulity.Normal:
+                    enemies = GenerateNormalEnemySectionLayout();
+                    break;
+                case Difficulity.Hard:
+                    enemies = GenerateHardwEnemySectionLayout();
+                    break;
+            }
+
+            while(enemies.Count > 0)
+            {
+                EnemyType enemyType = enemies.Pop();
+                bool wasPlaced = false;
+                while (!wasPlaced)
+                {
+                    int x = MathUtil.RandomIndex(Size);
+                    int y = MathUtil.RandomIndex(Size);
+
+                    if (SectionLayout[y,x] == EmptyElement.InnerInstance)
+                    {
+                        switch (enemyType)
+                        {
+                            case EnemyType.Bishop:
+                                SectionLayout[y, x] = new Bishop(MapPosition + new Point(x,y));
+                                break;
+                            case EnemyType.Rook:
+                                SectionLayout[y, x] = new Rook(MapPosition + new Point(x, y));
+                                break;
+                            case EnemyType.Queen:
+                                SectionLayout[y, x] = new Queen(MapPosition + new Point(x, y));
+                                break;
+                        }
+
+                        wasPlaced = true;
+                    }
+                }
+            }
+        }
+        private Stack<EnemyType> GenerateEasyEnemySectionLayout()
+        {
+            Stack <EnemyType> enemies = new Stack<EnemyType>(4);    
+            int chosenLayout = MathUtil.RandomRange(0, 1);
+            if(chosenLayout == 0)
+            {
+                enemies.Push(EnemyType.Bishop);
+                enemies.Push(EnemyType.Bishop);
+            }
+            else
+            {
+                enemies.Push(EnemyType.Rook);
+            }
+
+            return enemies;
+
+        }
+        private Stack<EnemyType> GenerateNormalEnemySectionLayout()
+        {
+            Stack<EnemyType> enemies = new Stack<EnemyType>(4);
+            int chosenLayout = MathUtil.RandomRange(0, 2);
+            if (chosenLayout == 0)
+            {
+                enemies.Push(EnemyType.Bishop);
+                enemies.Push(EnemyType.Bishop);
+                enemies.Push(EnemyType.Bishop);
+            }
+            else if (chosenLayout == 1)
+            {
+                enemies.Push(EnemyType.Rook);
+                enemies.Push(EnemyType.Bishop);
+            }
+            else
+            {
+                enemies.Push(EnemyType.Queen);
+            }
+            return enemies;
+        }
+        private Stack<EnemyType> GenerateHardwEnemySectionLayout()
+        {
+            Stack<EnemyType> enemies = new Stack<EnemyType>(4);
+            int chosenLayout = MathUtil.RandomRange(0, 2);
+            if (chosenLayout == 0)
+            {
+                enemies.Push(EnemyType.Bishop);
+                enemies.Push(EnemyType.Bishop);
+                enemies.Push(EnemyType.Rook);
+            }
+            else if (chosenLayout == 1)
+            {
+                enemies.Push(EnemyType.Rook);
+                enemies.Push(EnemyType.Rook);
+            }
+            else
+            {
+                enemies.Push(EnemyType.Queen);
+                enemies.Push(EnemyType.Bishop);
+            }
+
+            return enemies;
+            
         }
     }
 }

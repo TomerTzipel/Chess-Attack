@@ -3,7 +3,7 @@ using System;
 
 namespace Slay_The_Basilisk_MonoGame
 {
-    public static class RNG
+    public static class MathUtil
     {
         public const int CONTINUE_CHANCE = 69;
 
@@ -57,6 +57,10 @@ namespace Slay_The_Basilisk_MonoGame
             }
 
             return -1; //Will never reach unless chances array doesn't sum to 100
+        }
+        public static int GetPercent(int value, int max)
+        {
+            return (int)(((float)value / max) * 100f);
         }
 
 

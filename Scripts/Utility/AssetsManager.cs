@@ -61,7 +61,7 @@ namespace Slay_The_Basilisk_MonoGame
 
         public static Texture2D RandomTileByVariant(TileVariant variant) 
         {
-            int chosenIndex = RNG.RandomIndex(Tiles.GetLength(1));
+            int chosenIndex = MathUtil.RandomIndex(Tiles.GetLength(1));
             return Tiles[(int)variant, chosenIndex];
         }
 
