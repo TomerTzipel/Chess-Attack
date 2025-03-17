@@ -12,8 +12,8 @@ namespace Slay_The_Basilisk_MonoGame
 
         public override bool TakeDamage(int damage)
         {
-            //CHANGE CHECK TO SEE IF PLAYER HAS A KEY
-            if (EnemyElement._enemies.Count == 0)
+            
+            if (RunManager.Player.UseKey())
             {
                 return base.TakeDamage(damage);
             }
@@ -22,7 +22,7 @@ namespace Slay_The_Basilisk_MonoGame
 
         public override void Die()
         {
-            //GIVE PLAYER SOMETHING
+            //TODO:GIVE PLAYER SOMETHING
         }
     }
 }

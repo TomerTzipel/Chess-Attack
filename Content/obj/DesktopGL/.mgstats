@@ -1,4 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/Bishop.png","D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/bin/DesktopGL/Elements/Bishop.xnb","TextureProcessor","Texture2DContent",288,16469,0.1913666
+"D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/BishopCD.png","D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/bin/DesktopGL/Elements/BishopCD.xnb","TextureProcessor","Texture2DContent",287,16469,0.0043259
 "D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/Chest.PNG","D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/bin/DesktopGL/Elements/Chest.xnb","TextureProcessor","Texture2DContent",2422,16469,0.1755205
 "D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/King.png","D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/bin/DesktopGL/Elements/King.xnb","TextureProcessor","Texture2DContent",291,16469,0.2472708
 "D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/KingCD.png","D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/bin/DesktopGL/Elements/KingCD.xnb","TextureProcessor","Texture2DContent",280,16469,0.0074856

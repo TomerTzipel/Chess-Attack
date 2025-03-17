@@ -85,7 +85,6 @@ namespace Slay_The_Basilisk_MonoGame
                     if (section == null)
                     {
                         GenerateSectionAt(j, i, SectionType.Outer);
-                        //Sections[i, j] = new Section(j, i, SectionType.Outer);
                     }
                     else if(section.Type != SectionType.Start && section.Type != SectionType.Exit)
                     {

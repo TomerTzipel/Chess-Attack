@@ -25,10 +25,6 @@ namespace Slay_The_Basilisk_MonoGame
 
         public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
 
-        //Default is to do nothing
-        public virtual void EnterScene() { }
-
-
-        
+        public virtual void EnterScene() { }     
     }
 }

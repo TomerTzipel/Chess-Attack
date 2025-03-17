@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 
@@ -61,15 +62,8 @@ namespace Slay_The_Basilisk_MonoGame
 
             if(ElementAt(mapPosition) != EmptyElement.OuterInstance) return false;
 
-            
-
-            List<Direction> directions = new List<Direction>
-            {
-                Direction.Right,
-                Direction.Up,
-                Direction.Down,
-                Direction.Left
-            };
+            Direction[] directionsArray = (Direction[])Enum.GetValues(typeof(Direction));
+            List<Direction> directions = new List<Direction>(directionsArray);
 
             Point elementInDirectionPosition;
             MapElement elementInDirection;

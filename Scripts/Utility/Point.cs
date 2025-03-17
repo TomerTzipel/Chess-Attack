@@ -4,8 +4,6 @@ using Microsoft.Xna.Framework;
 
 namespace Slay_The_Basilisk_MonoGame
 {
-    //REMEMBER POSITIVE Y IS DOWN!!!
-
     public enum Direction
     {
         Up,Down,Left,Right,NW,NE,SE,SW

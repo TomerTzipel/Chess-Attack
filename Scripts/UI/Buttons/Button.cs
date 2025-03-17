@@ -78,18 +78,10 @@ namespace Slay_The_Basilisk_MonoGame
 
         private void CheckHovering()
         {
-            //Option 1
             if (Area.Contains(_currentMouseState.X, _currentMouseState.Y))
             {
                 _isHovering |= true;
             }
-            /*Option 2
-            Rectangle mouseRectangle = new Rectangle(_currentMouseState.X, _currentMouseState.Y, 1, 1);
-            if (Area.Intersects(mouseRectangle))
-            {
-                _isHovering |= true;
-            }
-            */
         }
         private void CheckActivation()
         {

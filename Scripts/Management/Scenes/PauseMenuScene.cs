@@ -38,7 +38,6 @@ namespace Slay_The_Basilisk_MonoGame.Scripts.Management.Scenes
         }
         private static void GoToMainMenu(object sender, EventArgs eventArgs)
         {
-            //Only if a run is active
             GameManager.ChangeScene(SceneType.MainMenu);
         }
 

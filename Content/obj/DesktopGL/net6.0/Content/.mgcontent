@@ -4,6 +4,8 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/Bishop.png</File>
+    <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/BishopCD.png</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/Chest.PNG</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/King.png</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/KingCD.png</File>
@@ -29,6 +31,8 @@
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/UI/Button.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

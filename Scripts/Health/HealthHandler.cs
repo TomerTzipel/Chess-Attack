@@ -31,6 +31,14 @@ namespace Slay_The_Basilisk_MonoGame
             _currentHealth = maxHealth;
             IsDead = false;
         }
+        public void ModifyCurrentHealthByMaxHealthPercent(int percent)
+        {
+            if (percent == 0 || IsDead) return;
+
+            int value = (int)((_maxHealth * percent) / 100f);
+
+            ModifyHealth(value, HealthChangeMode.Current);
+        }
         public void ModifyHealth(int value, HealthChangeMode mode)
         {
             if (value == 0 || IsDead) return;
@@ -75,7 +83,7 @@ namespace Slay_The_Basilisk_MonoGame
 
             if (_maxHealth < 0)
             {
-                _maxHealth = 1; //So the player dies but the max health can't be 0 cause it will casue division by 0
+                _maxHealth = 1; //So the hitable dies but the max health can't be 0 cause it will casue division by 0
                 _currentHealth = 0;
             }
 

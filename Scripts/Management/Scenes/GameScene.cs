@@ -19,6 +19,7 @@ namespace Slay_The_Basilisk_MonoGame
             _inputMap.AddAction(new KeyboardAction(Keys.A, ButtonState.Pressed, new MovementEventArgs { Direction = Direction.Left })).Action += RunManager.HandlePlayerInput;
             _inputMap.AddAction(new KeyboardAction(Keys.D, ButtonState.Pressed, new MovementEventArgs { Direction = Direction.Right })).Action += RunManager.HandlePlayerInput;
             _inputMap.AddAction(new KeyboardAction(Keys.Escape, ButtonState.Pressed)).Action += OnPause;
+            _inputMap.AddAction(new KeyboardAction(Keys.Q, ButtonState.Pressed)).Action += DrinkPotion;
         }
 
         public override void EnterScene()
@@ -47,6 +48,10 @@ namespace Slay_The_Basilisk_MonoGame
         public void OnPause(object sender,EventArgs eventArgs)
         {
             GameManager.ChangeScene(SceneType.Pause);
+        }
+        public void DrinkPotion(object sender, EventArgs eventArgs)
+        {
+            RunManager.Player.DrinkHealthPotion();
         }
     }
 }

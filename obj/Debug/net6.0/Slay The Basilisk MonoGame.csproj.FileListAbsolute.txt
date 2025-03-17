@@ -48,3 +48,5 @@ D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Ti
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Tiles\Tile7.xnb
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\Chest.xnb
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\Slay The Basilisk MonoGame.sourcelink.json
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\Bishop.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\BishopCD.xnb

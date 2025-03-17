@@ -4,7 +4,7 @@ namespace Slay_The_Basilisk_MonoGame
 {
     public enum SectionType
     {
-        //Game Sections  (Must be 0-3)
+        //Game Sections
         Enemy, Chest, Exit,
 
         //Generation Sections
@@ -79,7 +79,7 @@ namespace Slay_The_Basilisk_MonoGame
         private void GenerateEnemySectionLayout()
         {
             Point mapPosition = MapPosition + new Point(Size / 2, Size / 2);
-            SectionLayout[Size / 2, Size / 2] = new Rook(mapPosition);
+            SectionLayout[Size / 2, Size / 2] = new Bishop(mapPosition);
         }
         private void GenerateExitSectionLayout()
         {

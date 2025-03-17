@@ -23,13 +23,11 @@ namespace Slay_The_Basilisk_MonoGame
         {
             IsRunActive = true;
 
-            //MOVE THE NUMBERS TO A STATIC GAME SETTINGS
             Player = new PlayerElement();
 
             _levelCount = 0;
             _numberOfLevels = numberOfLevels;
 
-            //with first level data
             StartLevel(0);
         }
 
@@ -42,7 +40,6 @@ namespace Slay_The_Basilisk_MonoGame
                 return;
             }
 
-            //with next level data
             StartLevel(_levelCount);
         }
 
@@ -66,7 +63,7 @@ namespace Slay_The_Basilisk_MonoGame
         public static void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             CurrentLevel.Draw(gameTime, spriteBatch);
-            //Draw HUD
+            //TODO:Draw HUD
         }
         public static void HandlePlayerInput(object sender, EventArgs args)
         {
