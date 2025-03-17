@@ -10,7 +10,7 @@ namespace Slay_The_Basilisk_MonoGame
     public enum Asset
     {
         Player,PlayerCD,
-        Rook,RookCD, Bishop, BishopCD,
+        Rook,RookCD, Bishop, BishopCD,Queen,QueenCD,
         Chest,Vase,
         Button
     }
@@ -34,6 +34,8 @@ namespace Slay_The_Basilisk_MonoGame
             Assets.Add(Asset.RookCD, content.Load<Texture2D>("Elements/RookCD"));
             Assets.Add(Asset.Bishop, content.Load<Texture2D>("Elements/Bishop"));
             Assets.Add(Asset.BishopCD, content.Load<Texture2D>("Elements/BishopCD"));
+            Assets.Add(Asset.Queen, content.Load<Texture2D>("Elements/Queen"));
+            Assets.Add(Asset.QueenCD, content.Load<Texture2D>("Elements/QueenCD"));
             Assets.Add(Asset.Chest, content.Load<Texture2D>("Elements/Chest"));
             Assets.Add(Asset.Button, content.Load<Texture2D>("UI/Button"));
 

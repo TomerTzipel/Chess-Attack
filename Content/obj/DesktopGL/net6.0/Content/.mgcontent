@@ -9,6 +9,8 @@
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/Chest.PNG</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/King.png</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/KingCD.png</File>
+    <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/Queen.png</File>
+    <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/QueenCD.png</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/Rook.png</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Elements/RookCD.png</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Fonts/Font.spritefont</File>
@@ -31,6 +33,8 @@
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/UI/Button.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

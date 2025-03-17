@@ -20,6 +20,7 @@ namespace Slay_The_Basilisk_MonoGame
         public static CharacterElementStats PlayerStats = new CharacterElementStats { Damage = 10, MaxHealth = 100, AttackCooldown = 1d, MoveCooldown = 0.3d };
         public static CharacterElementStats RookStats = new CharacterElementStats { Damage = 15, MaxHealth = 50, AttackCooldown = 1.2d, MoveCooldown = 1.2d };
         public static CharacterElementStats BishopStats = new CharacterElementStats { Damage = 10, MaxHealth = 30, AttackCooldown = 1.5d, MoveCooldown = 0.75d };
+        public static CharacterElementStats QueenStats = new CharacterElementStats { Damage = 10, MaxHealth = 30, AttackCooldown = 1.5d, MoveCooldown = 0.75d };
         public static Camera Camera = new Camera { Width = 30, Height = 16, WorldPosition = Vector2.Zero };
         public const int SectionSize = 3;
         public static List<MapData> Maps = new List<MapData>();

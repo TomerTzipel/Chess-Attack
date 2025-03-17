@@ -50,3 +50,5 @@ D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\El
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\obj\Debug\net6.0\Slay The Basilisk MonoGame.sourcelink.json
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\Bishop.xnb
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\BishopCD.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\Queen.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\QueenCD.xnb

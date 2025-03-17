@@ -54,7 +54,6 @@ namespace Slay_The_Basilisk_MonoGame
                 {
                     directions.Add(Direction.Left);
                 }
-
                 return;
             }
 

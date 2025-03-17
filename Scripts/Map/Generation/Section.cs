@@ -79,7 +79,7 @@ namespace Slay_The_Basilisk_MonoGame
         private void GenerateEnemySectionLayout()
         {
             Point mapPosition = MapPosition + new Point(Size / 2, Size / 2);
-            SectionLayout[Size / 2, Size / 2] = new Bishop(mapPosition);
+            SectionLayout[Size / 2, Size / 2] = new Queen(mapPosition);
         }
         private void GenerateExitSectionLayout()
         {
