@@ -1,15 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
-
-
-namespace Slay_The_Basilisk_MonoGame
+﻿
+namespace ChessOut.UI
 {
     public class Button : UIElement,IMyUpdateable
     {
-        #region Fields
-
         private string _text;
         private SpriteFont _font;
         private Color _textColor;
@@ -20,22 +13,17 @@ namespace Slay_The_Basilisk_MonoGame
         private bool _isHovering;
         private Color _unhoveredColor;
         private Color _hoveredColor;
-        #endregion
-
-        #region Properties
-        public event EventHandler Click;
 
         public bool IsClickable { get; set; } = true;
         private Rectangle Area
         {
             get
             {
-                return new Rectangle((int)_position.X, (int)_position.Y, (int)(_sprite.Width *_scale), (int)(_sprite.Height*_scale));
+                return new Rectangle((int)_position.X, (int)_position.Y, (int)(_sprite.Width * _scale), (int)(_sprite.Height * _scale));
             }
         }
-        #endregion
 
-        #region Methods
+        public event EventHandler Click;
 
         public Button(Vector2 position,float scale, Texture2D sprite, string text) : this(position, scale, sprite, text, Color.Gray, Color.White, Color.Black) { }
         public Button(Vector2 position, Texture2D sprite, string text) : this(position,1f, sprite, text, Color.Gray, Color.White, Color.Black) { }
@@ -99,6 +87,5 @@ namespace Slay_The_Basilisk_MonoGame
             }    
            
         }
-        #endregion
     }
 }

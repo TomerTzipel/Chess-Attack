@@ -1,18 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Diagnostics;
 
-
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.Run
 {
-    public struct Camera
-    {
-        public int Width;
-        public int Height;
-        public Vector2 WorldPosition;
-        public Point Origin { get { return RunManager.PlayerPosition - new Point(Width / 2, Height / 2); } }
-    }
+   
     public class Level : IMyDrawable, IMyUpdateable
     {
         public Camera Camera { get; private set; }
@@ -21,6 +11,7 @@ namespace Slay_The_Basilisk_MonoGame
 
         public Level(PlayerElement player,int levelIndex)
         {
+            //Clear enemies between levels to avoid having enemies persist between levels
             EnemyElement.ClearEnemies();
 
             Camera = GameData.Camera;

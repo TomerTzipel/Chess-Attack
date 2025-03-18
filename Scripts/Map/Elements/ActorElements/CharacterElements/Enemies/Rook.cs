@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.MapSystem.Elements.Enemies
 {
     public class Rook : EnemyElement
     {

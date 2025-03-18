@@ -1,20 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.MapSystem.Elements.Enemies
 {
-
-    public enum EnemyType
-    {
-        Bishop,Rook,Queen
-    }
+    //Every enemy that inherits only needs to calculate the directions it can move to reach the player
+    //and what it does when dying
     public abstract class EnemyElement : CharacterElement
     {
+        //A static list of all created enemies so the level can check if it can be exited
         public static List<EnemyElement> _enemies = new List<EnemyElement>(8);
 
         public static void ClearEnemies()
@@ -23,6 +15,7 @@ namespace Slay_The_Basilisk_MonoGame
         }
 
         protected float _aggroRange;
+
         public EnemyElement(Texture2D regularSprite, Texture2D cooldownSprite, Point mapPosition,float aggroRange, CharacterElementStats stats) : base(regularSprite, cooldownSprite, mapPosition, stats)
         {
             _aggroRange = aggroRange;
@@ -42,6 +35,29 @@ namespace Slay_The_Basilisk_MonoGame
         {
             AttemptToAct();
         }
+        public override void Die()
+        {
+            _enemies.Remove(this);
+        }
+        public override void Act(Direction direction)
+        {
+            Point targetPosition = new Point(_mapPosition).MovePointInDirection(direction);
+            MapElement elementInDirection = RunManager.CurrentLevel.Map.ElementAt(targetPosition);
+
+            if (elementInDirection == null || elementInDirection is IObstacle) return;
+
+            if (elementInDirection is EmptyElement)
+            {
+                Move(direction);
+                return;
+            }
+            if (elementInDirection is PlayerElement player)
+            {
+                Attack(player, direction);
+            }
+        }
+
+       
 
         private void AttemptToAct()
         {
@@ -61,28 +77,7 @@ namespace Slay_The_Basilisk_MonoGame
             }
         }
 
-        public override void Act(Direction direction)
-        {
-            Point targetPosition = new Point(_mapPosition).MovePointInDirection(direction);
-            MapElement elementInDirection = RunManager.CurrentLevel.Map.ElementAt(targetPosition);
-
-            if (elementInDirection == null || elementInDirection is IObstacle) return;
-
-            if (elementInDirection is EmptyElement)
-            {
-                Move(direction);
-                return;
-            }
-            if (elementInDirection is PlayerElement player)
-            {
-                Attack(player,direction);
-            }
-        }
-
-        public override void Die()
-        {
-            _enemies.Remove(this);
-        }
+       
 
         protected abstract List<Direction> CalculateAvailableDirections();
         protected abstract void CalculateDirectionsToPlayer(List<Direction> directions);

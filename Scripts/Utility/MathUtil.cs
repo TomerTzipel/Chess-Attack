@@ -1,13 +1,10 @@
 ﻿
-using System;
-using System.Diagnostics;
-
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.Utility
 {
     public static class MathUtil
     {
+        //Chances that are part of the procedural generator
         public const int CONTINUE_CHANCE = 69;
-
         public const int BIOME_CHANCE = 50;
 
         private static readonly Random numberGenerator = new Random();

@@ -1,13 +1,7 @@
 ﻿
-
-using Microsoft.Xna.Framework;
-
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.Utility
 {
-    public enum Direction
-    {
-        Up,Down,Left,Right,NW,NE,SE,SW
-    }
+    
     //An int based Vector2, used for the map matrices
     public class Point
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.Input
 {
 
     public class KeyboardAction : InputAction

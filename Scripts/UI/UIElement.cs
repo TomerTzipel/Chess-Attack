@@ -1,8 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-
-
-namespace Slay_The_Basilisk_MonoGame
+﻿
+namespace ChessOut.UI
 {
     public class UIElement : IMyDrawable
     {
@@ -10,7 +7,6 @@ namespace Slay_The_Basilisk_MonoGame
         protected float _scale;
         protected Color _color;
         protected Texture2D _sprite;
-        
         
         public UIElement(Vector2 position,float scale, Color color, Texture2D sprite)
         {

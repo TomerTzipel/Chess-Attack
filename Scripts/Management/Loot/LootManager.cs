@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.Loot
 {
-    public enum LootOrigin
-    {
-        Chest, Vase, Rook, Bishop, Queen, Level
-    }
     public static class LootManager
     {
         public static void GivePlayerLootFromOrigin(LootOrigin origin)

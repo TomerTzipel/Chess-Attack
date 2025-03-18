@@ -1,6 +1,6 @@
 ﻿
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.MapSystem.Elements
 {
     public class Vase : BreakableElement
     {

@@ -1,36 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Slay_The_Basilisk_MonoGame
+﻿
+namespace ChessOut.Health
 {
-    public enum HealthChangeMode
-    {
-        Current,Max
-    }
-    public class HealthChangeEventArgs : EventArgs
-    {
-        public int NewHealth;
-        public int MaxHealth;
-        public HealthChangeMode mode;
-    }
     public class HealthHandler
     {
-        private int _maxHealth;
         private int _currentHealth;
+        private int _maxHealth;
+
         public bool IsDead { get; private set; }
 
         public event EventHandler<HealthChangeEventArgs> OnHealthChanged;
         public event Action OnDeath;
-
         public HealthHandler(int maxHealth)
         {
             _maxHealth = maxHealth;
             _currentHealth = maxHealth;
             IsDead = false;
         }
+
         public void ModifyCurrentHealthByMaxHealthPercent(int percent)
         {
             if (percent == 0 || IsDead) return;
@@ -52,20 +38,18 @@ namespace Slay_The_Basilisk_MonoGame
                     ModifyMaxHealth(value);
                     break;
             }
-
             if (_currentHealth <= 0) Die();
         }
-
         private void ModifyCurrentHealth(int value)
         {
             _currentHealth += value;
 
-            if(_currentHealth > _maxHealth)
+            if (_currentHealth > _maxHealth)
             {
                 _currentHealth = _maxHealth;
             }
 
-            if(_currentHealth <= 0)
+            if (_currentHealth <= 0)
             {
                 _currentHealth = 0;
             }
@@ -87,7 +71,7 @@ namespace Slay_The_Basilisk_MonoGame
                 _currentHealth = 0;
             }
 
-            OnHealthChanged?.Invoke(this, new HealthChangeEventArgs { NewHealth = _currentHealth,MaxHealth = _maxHealth,mode = HealthChangeMode.Max });
+            OnHealthChanged?.Invoke(this, new HealthChangeEventArgs { NewHealth = _currentHealth, MaxHealth = _maxHealth, mode = HealthChangeMode.Max });
         }
 
         private void Die()
@@ -95,7 +79,5 @@ namespace Slay_The_Basilisk_MonoGame
             IsDead = true;
             OnDeath?.Invoke();
         }
-       
-
     }
 }

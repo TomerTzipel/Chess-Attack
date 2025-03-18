@@ -1,3 +1,4 @@
-﻿
-using var game = new Slay_The_Basilisk_MonoGame.Game1();
+﻿using ChessOut;
+
+using var game = new Game1();
 game.Run();

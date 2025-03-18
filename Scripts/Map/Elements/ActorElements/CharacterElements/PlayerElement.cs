@@ -1,9 +1,6 @@
-﻿using System.Diagnostics;
-
-namespace Slay_The_Basilisk_MonoGame
+﻿
+namespace ChessOut.MapSystem.Elements
 {
-
-
     public class PlayerElement : CharacterElement
     {
         public Inventory Inventory { get; private set; }
@@ -59,11 +56,6 @@ namespace Slay_The_Basilisk_MonoGame
             }     
         }
 
-        private void AddMaxHealth()
-        {
-            HealthHandler.ModifyHealth(50, HealthChangeMode.Max);
-        }
-
         public override void Act(Direction direction)
         {
             if (_isOnCooldown) return;
@@ -88,6 +80,10 @@ namespace Slay_The_Basilisk_MonoGame
         public override void Die()
         {
             RunManager.EndRun(false);
+        }
+        private void AddMaxHealth()
+        {
+            HealthHandler.ModifyHealth(50, HealthChangeMode.Max);
         }
     }
 }

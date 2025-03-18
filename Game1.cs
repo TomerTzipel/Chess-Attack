@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut
 {
     public class Game1 : Game
     {
@@ -16,7 +14,6 @@ namespace Slay_The_Basilisk_MonoGame
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
-
 
         protected override void Initialize()
         {
@@ -42,9 +39,9 @@ namespace Slay_The_Basilisk_MonoGame
             GraphicsDevice.Clear(Color.Black);
 
             SpriteBatch.Begin();
-            //SpriteBatch.Draw(AssetsManager.PlayerSprite, new Vector2(-32f,-32f), new Rectangle { X = 0,Y=0,Width=64,Height=64},Color.White,0f, new Vector2(0, 0), Vector2.One, SpriteEffects.None,0f);
             GameManager.DrawCurrentScene(gameTime);
             SpriteBatch.End();
+
             base.Draw(gameTime);
         }
     }

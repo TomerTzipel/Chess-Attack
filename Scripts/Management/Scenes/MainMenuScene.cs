@@ -1,9 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-
-
-namespace Slay_The_Basilisk_MonoGame
+﻿
+namespace ChessOut.Scenes
 {
     public class MainMenuScene : MenuScene
     {

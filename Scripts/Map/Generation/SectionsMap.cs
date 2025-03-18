@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Slay_The_Basilisk_MonoGame
+
+namespace ChessOut.MapSystem
 {
     internal class SectionsMap
     {
@@ -38,6 +35,8 @@ namespace Slay_The_Basilisk_MonoGame
 
             CleanUp();
         }
+
+        //Allocates to inner sections the type
         public void AllocateSectionsType(int numberOfSectionsToAllocate, SectionType type)
         {
             int count = 0;
@@ -48,7 +47,7 @@ namespace Slay_The_Basilisk_MonoGame
                 {
                     if (section.Type != SectionType.Inner) continue;
 
-                    int chance = MathUtil.GetPercent(numberOfSectionsToAllocate, _numberOfInnerSections - 2);  //((float)numberOfSectionsToAllocate / (_numberOfInnerSections - 2))*100;
+                    int chance = MathUtil.GetPercent(numberOfSectionsToAllocate, _numberOfInnerSections - 2);
 
                     if (MathUtil.RollChance(chance))
                     {

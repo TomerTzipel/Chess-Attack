@@ -1,17 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.Input
 {
-    public enum MouseButton
-    {
-        Right,Left,Middle
-    }
-
     public class MouseAction : InputAction
     {
         private MouseButton _button;

@@ -4,7 +4,7 @@ using System;
 using Microsoft.Xna.Framework.Input;
 
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.Scenes
 {
     public class MovementEventArgs : EventArgs
     {
@@ -14,6 +14,7 @@ namespace Slay_The_Basilisk_MonoGame
     {
         public GameScene() 
         {
+            //Mapping player controls to the input map.
             _inputMap.AddAction(new KeyboardAction(Keys.W, ButtonState.Pressed, new MovementEventArgs { Direction = Direction.Up })).Action += RunManager.HandlePlayerInput;
             _inputMap.AddAction(new KeyboardAction(Keys.S, ButtonState.Pressed, new MovementEventArgs { Direction = Direction.Down })).Action += RunManager.HandlePlayerInput;
             _inputMap.AddAction(new KeyboardAction(Keys.A, ButtonState.Pressed, new MovementEventArgs { Direction = Direction.Left })).Action += RunManager.HandlePlayerInput;

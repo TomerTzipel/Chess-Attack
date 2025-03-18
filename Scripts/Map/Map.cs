@@ -1,15 +1,10 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-
-
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.MapSystem
 {
-  
-
     public class Map : IMyDrawable
     {
         private readonly int _size;
@@ -19,9 +14,46 @@ namespace Slay_The_Basilisk_MonoGame
         { 
             _size = mapData.Size * GameData.SectionSize;
 
+            //Procedurally generating a map of sections
             SectionsMap sectionsMap = new SectionsMap(mapData.Size,mapData.SectionsToGenerate);
+            //Creating the background tile map from the sections map
             GenerateTileMap(sectionsMap);
+            //Creating the actual matrix the data sits on during the level
             GenerateDataMap(sectionsMap, mapData);
+        }
+        public MapElement ElementAt(Point position)
+        {
+            if (position.Y < 0 || position.X < 0 || position.Y >= _size || position.X >= _size) return null;
+
+            return _dataMap[position.Y, position.X];
+        }
+
+        //Whoever calls the function is in charge of making sure it can override whoever it is walking into and that it is within map bounds
+        public void MoveElementAtInDirection(Point position, Direction direction)
+        {
+            Point newPosition = new Point(position).MovePointInDirection(direction);
+            _dataMap[newPosition.Y, newPosition.X] = _dataMap[position.Y, position.X];
+            _dataMap[position.Y, position.X] = EmptyElement.InnerInstance;
+        }
+
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            Camera camera = RunManager.CurrentLevel.Camera;
+
+            for (int i = camera.Origin.Y; i < camera.Origin.Y + camera.Height; i++)
+            {
+                for (int j = camera.Origin.X; j < camera.Origin.X + camera.Width; j++)
+                {
+                    if (i < 0 || j < 0 || i >= _size || j >= _size) continue;
+
+                    if (_tileMap[i, j] == null) continue;
+
+                    _tileMap[i, j].Draw(gameTime, spriteBatch);
+
+                    if (_dataMap[i, j] is IMyDrawable drawable) drawable.Draw(gameTime, spriteBatch);
+
+                }
+            }
         }
         private void GenerateDataMap(SectionsMap sectionsMap,MapData mapData)
         {
@@ -120,39 +152,6 @@ namespace Slay_The_Basilisk_MonoGame
             _tileMap[i, j] = new ActorElement(tileSprite, mapPosition);
         }
 
-        public MapElement ElementAt(Point position)
-        {
-            if(position.Y < 0 || position.X < 0 || position.Y >= _size || position.X >= _size) return null;
-
-            return _dataMap[position.Y, position.X];
-        }
-
-        //Whoever calls the function is in charge of making sure it can override whoever it is walking into and that it is within map bounds
-        public void MoveElementAtInDirection(Point position,Direction direction)
-        {
-            Point newPosition = new Point(position).MovePointInDirection(direction);
-            _dataMap[newPosition.Y, newPosition.X] = _dataMap[position.Y, position.X];
-            _dataMap[position.Y, position.X] = EmptyElement.InnerInstance;
-        }
-
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
-        {
-            Camera camera = RunManager.CurrentLevel.Camera;
-
-            for (int i = camera.Origin.Y; i < camera.Origin.Y + camera.Height; i++)
-            {
-                for (int j = camera.Origin.X; j < camera.Origin.X + camera.Width; j++)
-                {
-                    if (i < 0 || j < 0 || i >= _size || j >= _size) continue;
-
-                    if (_tileMap[i, j] == null) continue;
-
-                    _tileMap[i, j].Draw(gameTime, spriteBatch);
-
-                    if(_dataMap[i, j] is IMyDrawable drawable) drawable.Draw(gameTime, spriteBatch);
-                   
-                }
-            }
-        }
+        
     }
 }

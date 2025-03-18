@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Slay_The_Basilisk_MonoGame
+﻿
+namespace ChessOut.MapSystem.Elements
 {
+    //A father for all elemnts to inhernit from for polymorphism of the data map
     public abstract class MapElement
     {
         public const int ElementSize = 64;

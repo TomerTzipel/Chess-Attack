@@ -1,11 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
+﻿
 using System.Diagnostics;
 using System.IO;
 
-
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.Utility
 {
     //It's a class and not a struct so I could return null
     public class MapData
@@ -16,10 +13,14 @@ namespace Slay_The_Basilisk_MonoGame
         public int ChestSectionsToGenerate;
     }
 
+    //A class that is in charge of all the game data prior to begining a run
+    //Some data is hard coded due to time constraint but the characters data is extracted from a file
+    //The map data also seems to be taken from a file but it will always fail to show the error handling and the backup
     public static class GameData
     {
         private const string CHARACTER_DATA_PATH = "..\\..\\..\\Data\\Characters_Data.txt";
         private const string MAP_DATA_PATH = "..\\..\\..\\Data\\Map_Data.txt";
+
         //Defaults in case the file wasn't found
         public static CharacterElementStats PlayerStats = new CharacterElementStats { MaxHealth = 200, Damage = 25, AttackCooldown = 1d, MoveCooldown = 0.4d };
         public static CharacterElementStats RookStats = new CharacterElementStats { MaxHealth = 50, Damage = 20, AttackCooldown = 1d, MoveCooldown = 1d };
@@ -43,6 +44,7 @@ namespace Slay_The_Basilisk_MonoGame
         {
             try
             {
+                //Reading the data from the file for extraction
                 string rawData = File.ReadAllText(CHARACTER_DATA_PATH);
                 string[] charactersRawData = rawData.Replace("\r\n", "").Split(',');
                 Stack<string[]> charactersData = new Stack<string[]>(charactersRawData.Length);
@@ -90,6 +92,8 @@ namespace Slay_The_Basilisk_MonoGame
 
             return Maps[levelIndex];
         }
+        //Creates a matrix where each row is the origin of the loot and each column is the possiable item to get,
+        //the value itself is the percent of dropping the item
         private static void InitializeLootData(int originCount,int itemCount)
         {
             lootData = new int[originCount, itemCount];
@@ -117,6 +121,8 @@ namespace Slay_The_Basilisk_MonoGame
             lootData[(int)LootOrigin.Level, (int)ItemType.MaxHealthToken] = 100; lootData[(int)LootOrigin.Level, (int)ItemType.DamageToken] = 0;
             lootData[(int)LootOrigin.Level, (int)ItemType.AttackSpeedToken] = 0; lootData[(int)LootOrigin.Level, (int)ItemType.SpeedToken] = 0;
         }
+
+        //The functions takes the prior matrix and distrubtes it within the dictionary
         private static void SetUpLootTables()
         {
             LootOrigin[] origins = (LootOrigin[])Enum.GetValues(typeof(LootOrigin));

@@ -1,16 +1,13 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Diagnostics;
+﻿
 
-
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.MapSystem.Elements
 {
+    //An element that is drawble on the map
     public class ActorElement : MapElement, IMyDrawable
     {
         protected Texture2D _sprite;
         protected Point _mapPosition;
-
+            
         protected Vector2 WorldPosition
         {
             get 
@@ -19,7 +16,7 @@ namespace Slay_The_Basilisk_MonoGame
                 return ((_mapPosition - camera.Origin) * MapElement.ElementSize) + camera.WorldPosition;
             }
         }
-        public ActorElement(Texture2D sprite,Point mapPosition) 
+        public ActorElement(Texture2D sprite, Point mapPosition)
         {
             _sprite = sprite;
             _mapPosition = mapPosition;

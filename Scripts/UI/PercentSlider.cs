@@ -1,9 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-
-
-namespace Slay_The_Basilisk_MonoGame
+﻿
+namespace ChessOut.UI
 {
     public class PercentSlider : UIElement
     {

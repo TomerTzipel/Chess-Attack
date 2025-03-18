@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Slay_The_Basilisk_MonoGame
+﻿
+namespace ChessOut.Loot
 {
-    public enum ItemType
-    {
-        Key, Potion, DamageToken, SpeedToken, AttackSpeedToken, MaxHealthToken
-    }
     public class Inventory
     {
         public int[] Items { get; private set; }

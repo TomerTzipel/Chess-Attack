@@ -3,11 +3,11 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.UI
 {
     public class HUD : IMyDrawable
     {
-
+        //Placment Data
         private const int IconSize = 64;
         private const int TextRectWidth = 16;
         private const float TextScale = 3f;  
@@ -15,6 +15,7 @@ namespace Slay_The_Basilisk_MonoGame
         private const int VerticalIconPad = 16;
         private Vector2 _panelPosition = new Vector2(0, 128);
 
+        //Elements Positions
         private Vector2 _iconStartPosition;
         private Vector2 _keyIconPosition;
         private Vector2 _potionIconPosition;
@@ -67,6 +68,23 @@ namespace Slay_The_Basilisk_MonoGame
 
             _hpBar = new PercentSlider(_hpBarPosition,1f,Color.White,AssetsManager.GetAsset(Asset.HpBar), AssetsManager.GetAsset(Asset.HpBarFill));
         }
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(_panel, _panelPosition, new Rectangle(0, 0, _panel.Width, _panel.Height), Color.White, 0f, Vector2.Zero, 1.15f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(_keyIcon, _keyIconPosition, Color.White);
+            spriteBatch.Draw(_potionIcon, _potionIconPosition, Color.White);
+            spriteBatch.Draw(_damageIcon, _damageIconPosition, Color.White);
+            spriteBatch.Draw(_attackSpeedIcon, _attackSpeedIconPosition, Color.White);
+            spriteBatch.Draw(_speedIcon, _speedIconPosition, Color.White);
+
+            _keyCounter.Draw(gameTime, spriteBatch);
+            _potionCounter.Draw(gameTime, spriteBatch);
+            _damageCounter.Draw(gameTime, spriteBatch);
+            _attackSpeedCounter.Draw(gameTime, spriteBatch);
+            _speedCounter.Draw(gameTime, spriteBatch);
+
+            _hpBar.Draw(gameTime, spriteBatch);
+        }
 
         private void HandleHealthChange(object sender, HealthChangeEventArgs args)
         {
@@ -91,23 +109,7 @@ namespace Slay_The_Basilisk_MonoGame
             _speedCounter.UpdateText($"x{inventory.GetItemAmount(ItemType.SpeedToken)}");
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(_panel, _panelPosition,new Rectangle(0,0,_panel.Width,_panel.Height), Color.White,0f,Vector2.Zero,1.15f,SpriteEffects.None,0f);
-            spriteBatch.Draw(_keyIcon, _keyIconPosition, Color.White);
-            spriteBatch.Draw(_potionIcon, _potionIconPosition, Color.White);
-            spriteBatch.Draw(_damageIcon, _damageIconPosition, Color.White);
-            spriteBatch.Draw(_attackSpeedIcon, _attackSpeedIconPosition, Color.White);
-            spriteBatch.Draw(_speedIcon, _speedIconPosition, Color.White);
-
-            _keyCounter.Draw(gameTime, spriteBatch);
-            _potionCounter.Draw(gameTime, spriteBatch);
-            _damageCounter.Draw(gameTime, spriteBatch);
-            _attackSpeedCounter.Draw(gameTime, spriteBatch);
-            _speedCounter.Draw(gameTime, spriteBatch);
-
-            _hpBar.Draw(gameTime, spriteBatch);
-        }
+     
 
        
     }

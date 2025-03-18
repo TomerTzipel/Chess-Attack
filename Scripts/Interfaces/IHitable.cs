@@ -1,6 +1,5 @@
 ﻿
-
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.Interfaces
 {
     public interface IHitable
     {

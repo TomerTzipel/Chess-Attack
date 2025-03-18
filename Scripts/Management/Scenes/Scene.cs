@@ -1,17 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Slay_The_Basilisk_MonoGame
+﻿
+namespace ChessOut.Scenes
 {
-    public enum SceneType
-    {
-        MainMenu,Pause,Game
-    }
+   
     public abstract class Scene : IMyDrawable,IMyUpdateable
     {
         protected InputMap _inputMap;

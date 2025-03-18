@@ -1,7 +1,10 @@
 ﻿
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.MapSystem.Elements
 {
+
+    //An element that allows characters to move onto, helps diffirintate game area vs non game area
+    //Hold two singletons as there is no reason to actually create many instances just to check if its inner or not.
     public class EmptyElement : MapElement
     {
         private static EmptyElement _outerInstance;

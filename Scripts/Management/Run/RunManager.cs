@@ -1,29 +1,16 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Slay_The_Basilisk_MonoGame
+﻿
+namespace ChessOut.Run
 {
-    public enum Difficulity
-    {
-        Easy,Normal,Hard
-    }
-
     public static class RunManager
     {
-        public static Level CurrentLevel { get; private set; }
-
-        public static PlayerElement Player { get; private set; }
         private static HUD _hud;
         private static int _levelCount;
         private static int _numberOfLevels;
-
+        public static bool LastRunResult { get; private set; }
+        public static Level CurrentLevel { get; private set; }
+        public static PlayerElement Player { get; private set; }
         public static bool IsRunActive { get; set; } = false;
+
         public static Point PlayerPosition { get { return Player.MapPosition; } }
         public static Difficulity CurrentDifficulity 
         { 
@@ -35,6 +22,7 @@ namespace Slay_The_Basilisk_MonoGame
                 return Difficulity.Hard;
             } 
         }
+
         public static void StartRun(int numberOfLevels)
         {
             IsRunActive = true;
@@ -64,14 +52,8 @@ namespace Slay_The_Basilisk_MonoGame
         public static void EndRun(bool runResult)
         {
             IsRunActive = false;
-            if (runResult)
-            {
-                GameManager.ChangeScene(SceneType.MainMenu);
-            }
-            else
-            {
-                GameManager.ChangeScene(SceneType.MainMenu);
-            }
+            LastRunResult = runResult;
+            GameManager.ChangeScene(SceneType.GameOver);
         }
 
         public static void Update(GameTime gameTime)
@@ -96,6 +78,5 @@ namespace Slay_The_Basilisk_MonoGame
                 enemy.StartAI();
             }
         }
-
     }
 }

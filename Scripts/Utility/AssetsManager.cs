@@ -4,28 +4,21 @@ using System.Collections.Generic;
 
 
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.Utility
 {
 
-    public enum Asset
-    {
-        Player,PlayerCD,
-        Rook,RookCD, Bishop, BishopCD,Queen,QueenCD,
-        Chest,Vase,
-        Button,Panel,HpBar,HpBarFill,
-        KeyIcon,PotionIcon,DamageIcon,AttackSpeedIcon,SpeedIcon
-    }
-
-    public enum TileVariant
-    {
-        Light,Dark
-    }
+    //A class that hold all of the game's assets
+    //Loads them from content right at the start of the game
     public static class AssetsManager
     {
         public static SpriteFont Font;
         public static Texture2D[] Stairs;
 
+        //The dictionary all the assets are pulled from
         private static Dictionary<Asset, Texture2D> Assets = new Dictionary<Asset, Texture2D>(8);
+
+        //Due to having both light and dark variants of the tiles and staires we pull them from
+        //array/matrix instead accoring to the enum that was chosen for the tile
         private static Texture2D[,] Tiles;
         public static void LoadContent(ContentManager content)
         {

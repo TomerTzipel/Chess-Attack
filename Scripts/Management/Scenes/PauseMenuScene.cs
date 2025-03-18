@@ -1,11 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-
-
-namespace Slay_The_Basilisk_MonoGame.Scripts.Management.Scenes
+﻿
+namespace ChessOut.Scenes
 {
-    internal class PauseMenuScene : MenuScene
+    public class PauseMenuScene : MenuScene
     {
         private Button _resumeButton;
         private Button _mainMenuButton;

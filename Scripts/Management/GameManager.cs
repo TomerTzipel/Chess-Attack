@@ -1,38 +1,36 @@
-﻿using Microsoft.Xna.Framework;
-using Slay_The_Basilisk_MonoGame.Scripts.Management.Scenes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Slay_The_Basilisk_MonoGame
+﻿
+namespace ChessOut
 {
     public static class GameManager
     {
         public const int WindowWidth = 1920;
         public const int WindowHeight = 1080;
 
-        public static Game1 Game;
+        public static bool IsContinuingRun = false;
+
+        private static Game1 _game;
         private static Scene[] _scenes;
         private static SceneType _currentSceneType;
 
-        public static bool IsContinuingRun = false;
-
         public static void StartGame(Game1 game)
         {
+            //Loads all the needed game data either from files or from hard coded tables
             GameData.LoadGameData();
-            Game = game;
+
+            _game = game;
+
+            //Adds all the scenes in the game to the scene array 
             _scenes = new Scene[Enum.GetValues(typeof(SceneType)).Length];
 
             _scenes[(int)SceneType.MainMenu] = new MainMenuScene();
             _scenes[(int)SceneType.Game] = new GameScene();
             _scenes[(int)SceneType.Pause] = new PauseMenuScene();
+            _scenes[(int)SceneType.GameOver] = new GameOverScene();
             ChangeScene(SceneType.MainMenu);
 
-            Game.Graphics.PreferredBackBufferWidth = WindowWidth;
-            Game.Graphics.PreferredBackBufferHeight = WindowHeight;
-            Game.Graphics.ApplyChanges();
+            _game.Graphics.PreferredBackBufferWidth = WindowWidth;
+            _game.Graphics.PreferredBackBufferHeight = WindowHeight;
+            _game.Graphics.ApplyChanges();
         }
 
         public static void UpdateCurrentScene(GameTime gameTime)
@@ -42,7 +40,7 @@ namespace Slay_The_Basilisk_MonoGame
 
         public static void DrawCurrentScene(GameTime gameTime)
         {
-            _scenes[(int)_currentSceneType].Draw(gameTime,Game.SpriteBatch);
+            _scenes[(int)_currentSceneType].Draw(gameTime,_game.SpriteBatch);
         }
 
         public static void ChangeScene(SceneType scene)
@@ -53,7 +51,7 @@ namespace Slay_The_Basilisk_MonoGame
 
         public static void Exit()
         {
-            Game.Exit();
+            _game.Exit();
         }
     }
 }

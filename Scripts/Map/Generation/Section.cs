@@ -3,21 +3,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Slay_The_Basilisk_MonoGame
+namespace ChessOut.MapSystem
 {
-    public enum SectionType
-    {
-        //Game Sections
-        Enemy, Chest, Exit,
-
-        //Generation Sections
-        PsuedoStart, Discontinue, End, Inner, Outer, Start
-    }
+    
     internal class Section
     {
         private int Size { get {  return GameData.SectionSize; } }
 
-        public Point MapPosition { get; private set; } //top left
+        public Point MapPosition { get; private set; } //top left (0,0) of the section
 
         public Point SectionMapPosition { get; private set; }
 
@@ -33,7 +26,8 @@ namespace Slay_The_Basilisk_MonoGame
             SectionMapPosition = new Point(x, y);
             MapPosition = new Point(x, y) * Size;
             SectionLayout = new MapElement[Size, Size];
-
+            
+            //Filling the layout with either inner elements if the section is walkable and outer if it isn't
             EmptyElement elementToFill = Type == SectionType.Outer ? EmptyElement.OuterInstance : EmptyElement.InnerInstance;
 
             for (int i = 0; i < Size; i++)
@@ -96,6 +90,9 @@ namespace Slay_The_Basilisk_MonoGame
             SectionLayout[Size / 2, Size / 2] = RunManager.Player;
             RunManager.Player.MapPosition = MapPosition + new Point(Size / 2, Size / 2);
         }
+
+        //According to the difficulity of the level (based on run completion) a stack of predetermined enemy options
+        //will be chosen randomly (equall odds) and placed on the layout
         private void GenerateEnemySectionLayout()
         {
             Stack<EnemyType> enemies = null;
