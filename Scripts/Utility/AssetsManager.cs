@@ -12,7 +12,7 @@ namespace Slay_The_Basilisk_MonoGame
         Player,PlayerCD,
         Rook,RookCD, Bishop, BishopCD,Queen,QueenCD,
         Chest,Vase,
-        Button,Panel,
+        Button,Panel,HpBar,HpBarFill,
         KeyIcon,PotionIcon,DamageIcon,AttackSpeedIcon,SpeedIcon
     }
 
@@ -41,11 +41,13 @@ namespace Slay_The_Basilisk_MonoGame
             Assets.Add(Asset.Vase, content.Load<Texture2D>("Elements/Vase"));
             Assets.Add(Asset.Button, content.Load<Texture2D>("UI/Button"));
             Assets.Add(Asset.Panel, content.Load<Texture2D>("UI/Panel"));
+            Assets.Add(Asset.HpBar, content.Load<Texture2D>("UI/HpBar"));
+            Assets.Add(Asset.HpBarFill, content.Load<Texture2D>("UI/HpBarFill"));
             Assets.Add(Asset.KeyIcon, content.Load<Texture2D>("UI/KeyIcon"));
-            Assets.Add(Asset.PotionIcon, content.Load<Texture2D>("UI/KeyIcon"));
-            Assets.Add(Asset.DamageIcon, content.Load<Texture2D>("UI/KeyIcon"));
-            Assets.Add(Asset.AttackSpeedIcon, content.Load<Texture2D>("UI/KeyIcon"));
-            Assets.Add(Asset.SpeedIcon, content.Load<Texture2D>("UI/KeyIcon"));
+            Assets.Add(Asset.PotionIcon, content.Load<Texture2D>("UI/PotionIcon"));
+            Assets.Add(Asset.DamageIcon, content.Load<Texture2D>("UI/DamageIcon"));
+            Assets.Add(Asset.AttackSpeedIcon, content.Load<Texture2D>("UI/AttackSpeedIcon"));
+            Assets.Add(Asset.SpeedIcon, content.Load<Texture2D>("UI/SpeedIcon"));
             Font = content.Load<SpriteFont>("Fonts/Font");
 
             Tiles = new Texture2D[2,7];

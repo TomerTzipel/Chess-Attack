@@ -44,7 +44,7 @@ namespace Slay_The_Basilisk_MonoGame
             _levelCount = 0;
             _numberOfLevels = numberOfLevels;
 
-            _hud = new HUD();
+            _hud = new HUD(Player);
 
             StartLevel(0);
         }

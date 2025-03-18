@@ -12,7 +12,6 @@ namespace Slay_The_Basilisk_MonoGame
             get 
             {
                 int damage = base.Damage + (Inventory.Items[(int)ItemType.DamageToken] * GameData.PlayerDamageScaling);
-                Debug.WriteLine(damage);
                 return damage;
             } 
         }

@@ -55,3 +55,9 @@ D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\El
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\Vase.xnb
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\UI\KeyIcon.xnb
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\UI\Panel.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\UI\HpBar.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\UI\HpBarFill.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\UI\AttackSpeedIcon.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\UI\DamageIcon.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\UI\PotionIcon.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\UI\SpeedIcon.xnb

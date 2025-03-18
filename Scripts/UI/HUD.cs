@@ -35,9 +35,14 @@ namespace Slay_The_Basilisk_MonoGame
         private TextBox _attackSpeedCounter;
         private TextBox _speedCounter;
 
-        public HUD() 
+        private PercentSlider _hpBar;
+        private Vector2 _hpBarPosition = Vector2.Zero;
+
+        public HUD(PlayerElement player) 
         {
-            RunManager.Player.Inventory.OnInventoryChange += HandleInventoryChange;
+            player.Inventory.OnInventoryChange += HandleInventoryChange;
+            player.HealthHandler.OnHealthChanged += HandleHealthChange;
+
             _iconStartPosition = new Vector2(_panelPosition.X+32, _panelPosition.Y+32);
             _keyIconPosition = _iconStartPosition;
             _potionIconPosition = new Vector2(_iconStartPosition.X, _iconStartPosition.Y + IconSize + VerticalIconPad);
@@ -57,13 +62,24 @@ namespace Slay_The_Basilisk_MonoGame
             _keyCounter = new TextBox(new Vector2(_keyIconPosition.X + pad, _keyIconPosition.Y), TextRectWidth, IconSize, TextScale, "x0",Color.Gold);
             _potionCounter = new TextBox(new Vector2(_potionIconPosition.X + pad, _potionIconPosition.Y), TextRectWidth, IconSize, TextScale, "x0", Color.Black);
             _damageCounter = new TextBox(new Vector2(_damageIconPosition.X + pad, _damageIconPosition.Y), TextRectWidth, IconSize, TextScale, "x0", Color.Red);
-            _attackSpeedCounter = new TextBox(new Vector2(_attackSpeedIconPosition.X + pad, _attackSpeedIconPosition.Y), TextRectWidth, IconSize, TextScale, "x0", Color.Green);
-            _speedCounter = new TextBox(new Vector2(_speedIconPosition.X + pad, _speedIconPosition.Y), TextRectWidth, IconSize, TextScale, "x0", Color.Yellow);
+            _attackSpeedCounter = new TextBox(new Vector2(_attackSpeedIconPosition.X + pad, _attackSpeedIconPosition.Y), TextRectWidth, IconSize, TextScale, "x0", Color.Blue);
+            _speedCounter = new TextBox(new Vector2(_speedIconPosition.X + pad, _speedIconPosition.Y), TextRectWidth, IconSize, TextScale, "x0", Color.Green);
+
+            _hpBar = new PercentSlider(_hpBarPosition,1f,Color.White,AssetsManager.GetAsset(Asset.HpBar), AssetsManager.GetAsset(Asset.HpBarFill));
         }
 
-        private void HandleHealthChange()
+        private void HandleHealthChange(object sender, HealthChangeEventArgs args)
         {
-            
+
+            _hpBar.SetValue((float)args.NewHealth / args.MaxHealth);
+            switch (args.mode)
+            {
+                case HealthChangeMode.Current:
+                    break;
+                case HealthChangeMode.Max:
+                    break;
+            }
+
         }
 
         private void HandleInventoryChange(Inventory inventory)
@@ -89,6 +105,8 @@ namespace Slay_The_Basilisk_MonoGame
             _damageCounter.Draw(gameTime, spriteBatch);
             _attackSpeedCounter.Draw(gameTime, spriteBatch);
             _speedCounter.Draw(gameTime, spriteBatch);
+
+            _hpBar.Draw(gameTime, spriteBatch);
         }
 
        

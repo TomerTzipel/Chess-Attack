@@ -31,11 +31,23 @@
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Tiles/Tile5.PNG</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Tiles/Tile6.PNG</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/Tiles/Tile7.PNG</File>
+    <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/UI/AttackSpeedIcon.png</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/UI/Button.png</File>
+    <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/UI/DamageIcon.png</File>
+    <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/UI/HpBar.png</File>
+    <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/UI/HpBarFill.png</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/UI/KeyIcon.png</File>
     <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/UI/Panel.png</File>
+    <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/UI/PotionIcon.png</File>
+    <File>D:/Studies/Semester C/OOP/Slay The Basilisk MonoGame/Content/UI/SpeedIcon.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
