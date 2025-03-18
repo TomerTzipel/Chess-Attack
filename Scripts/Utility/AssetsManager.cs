@@ -12,7 +12,8 @@ namespace Slay_The_Basilisk_MonoGame
         Player,PlayerCD,
         Rook,RookCD, Bishop, BishopCD,Queen,QueenCD,
         Chest,Vase,
-        Button
+        Button,Panel,
+        KeyIcon,PotionIcon,DamageIcon,AttackSpeedIcon,SpeedIcon
     }
 
     public enum TileVariant
@@ -39,8 +40,12 @@ namespace Slay_The_Basilisk_MonoGame
             Assets.Add(Asset.Chest, content.Load<Texture2D>("Elements/Chest"));
             Assets.Add(Asset.Vase, content.Load<Texture2D>("Elements/Vase"));
             Assets.Add(Asset.Button, content.Load<Texture2D>("UI/Button"));
-
-
+            Assets.Add(Asset.Panel, content.Load<Texture2D>("UI/Panel"));
+            Assets.Add(Asset.KeyIcon, content.Load<Texture2D>("UI/KeyIcon"));
+            Assets.Add(Asset.PotionIcon, content.Load<Texture2D>("UI/KeyIcon"));
+            Assets.Add(Asset.DamageIcon, content.Load<Texture2D>("UI/KeyIcon"));
+            Assets.Add(Asset.AttackSpeedIcon, content.Load<Texture2D>("UI/KeyIcon"));
+            Assets.Add(Asset.SpeedIcon, content.Load<Texture2D>("UI/KeyIcon"));
             Font = content.Load<SpriteFont>("Fonts/Font");
 
             Tiles = new Texture2D[2,7];

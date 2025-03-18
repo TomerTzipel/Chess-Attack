@@ -30,15 +30,17 @@ namespace Slay_The_Basilisk_MonoGame
         {
             get
             {
-                return new Rectangle((int)_position.X, (int)_position.Y, _sprite.Width, _sprite.Height);
+                return new Rectangle((int)_position.X, (int)_position.Y, (int)(_sprite.Width *_scale), (int)(_sprite.Height*_scale));
             }
         }
         #endregion
 
         #region Methods
-        public Button(Vector2 position, Texture2D sprite, string text) : this(position, sprite, text, Color.Gray, Color.White, Color.Black) { }
 
-        public Button(Vector2 position, Texture2D sprite, string text, Color hoverColor, Color unhoveredColor,Color textColor) : base(position, unhoveredColor, sprite)
+        public Button(Vector2 position,float scale, Texture2D sprite, string text) : this(position, scale, sprite, text, Color.Gray, Color.White, Color.Black) { }
+        public Button(Vector2 position, Texture2D sprite, string text) : this(position,1f, sprite, text, Color.Gray, Color.White, Color.Black) { }
+
+        public Button(Vector2 position,float scale, Texture2D sprite, string text, Color hoverColor, Color unhoveredColor,Color textColor) : base(position,scale, unhoveredColor, sprite)
         {
             _font = AssetsManager.Font;
             _text = text;
@@ -76,10 +78,10 @@ namespace Slay_The_Basilisk_MonoGame
 
             if (string.IsNullOrEmpty(_text)) return;
 
-            float x = (Area.X + (Area.Width / 2) - (_font.MeasureString(_text).X / 2));
-            float y = (Area.Y + (Area.Height / 2) - (_font.MeasureString(_text).Y / 2));
+            float x = (Area.X + (Area.Width / 2) - ((_font.MeasureString(_text).X / 2)*_scale));
+            float y = (Area.Y + (Area.Height / 2) - ((_font.MeasureString(_text).Y / 2) * _scale));
 
-            spriteBatch.DrawString(_font, _text, new Vector2(x, y), _textColor);
+            spriteBatch.DrawString(_font, _text, new Vector2(x, y), _textColor,0,Vector2.Zero,_scale,SpriteEffects.None,0f);
         }
 
         private void CheckHovering()

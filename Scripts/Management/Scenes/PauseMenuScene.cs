@@ -11,11 +11,12 @@ namespace Slay_The_Basilisk_MonoGame.Scripts.Management.Scenes
         private Button _mainMenuButton;
         public PauseMenuScene()
         {
+            float buttonScale = 2f;
             Texture2D buttonSprite = AssetsManager.GetAsset(Asset.Button);
-            int _startButtonX = GameManager.WindowWidth / 2 - buttonSprite.Width / 2;
+            int _startButtonX = GameManager.WindowWidth / 2 - (int)(buttonSprite.Width * buttonScale) / 2;
             int _startButtonY = 100;
-            _resumeButton = new Button(new Vector2(_startButtonX, _startButtonY), buttonSprite, "Resume");
-            _mainMenuButton = new Button(new Vector2(_startButtonX, _startButtonY + buttonSprite.Height + 50), buttonSprite, "Main Menu");
+            _resumeButton = new Button(new Vector2(_startButtonX, _startButtonY), buttonScale, buttonSprite, "Resume");
+            _mainMenuButton = new Button(new Vector2(_startButtonX, _startButtonY + buttonSprite.Height * buttonScale + 50), buttonScale, buttonSprite, "Main Menu");
 
 
             _resumeButton.Click += Resume;

@@ -82,7 +82,6 @@ namespace Slay_The_Basilisk_MonoGame
         public override void Die()
         {
             _enemies.Remove(this);
-            //TODO:GIVE PLAYER SOMETHING, ANYTHING
         }
 
         protected abstract List<Direction> CalculateAvailableDirections();

@@ -10,15 +10,19 @@ namespace Slay_The_Basilisk_MonoGame
         private Button _startButton;
         private Button _continueButton;
         private Button _quitButton;
+        private TextBox _gameTitle;
         
         public MainMenuScene()
         {
+            _gameTitle = new TextBox(new Vector2((GameManager.WindowWidth / 2)-64,200),128,64,5f,"CHESS OUT",Color.Purple);
+
+            float buttonScale = 2f;
             Texture2D buttonSprite = AssetsManager.GetAsset(Asset.Button);
-            int _startButtonX = GameManager.WindowWidth/2 - buttonSprite.Width/2;
-            int _startButtonY = 100;
-            _startButton = new Button(new Vector2(_startButtonX, _startButtonY), buttonSprite,"Start");
-            _continueButton = new Button(new Vector2(_startButtonX, _startButtonY + buttonSprite.Height + 50), buttonSprite, "Continue");
-            _quitButton = new Button(new Vector2(_startButtonX, _startButtonY + ((buttonSprite.Height + 50)*2)), buttonSprite, "Quit");
+            int _startButtonX = GameManager.WindowWidth/2 - (int)(buttonSprite.Width * buttonScale) / 2;
+            int _startButtonY = 400;
+            _startButton = new Button(new Vector2(_startButtonX, _startButtonY), buttonScale, buttonSprite,"Start");
+            _continueButton = new Button(new Vector2(_startButtonX, _startButtonY + buttonSprite.Height * buttonScale + 50), buttonScale, buttonSprite, "Continue");
+            _quitButton = new Button(new Vector2(_startButtonX, _startButtonY + ((buttonSprite.Height * buttonScale + 50)*2)), buttonScale, buttonSprite, "Quit");
 
             _startButton.Click += StartRun;
             _continueButton.Click += ContinueRun;
@@ -34,6 +38,7 @@ namespace Slay_The_Basilisk_MonoGame
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            _gameTitle.Draw(gameTime, spriteBatch);
             base.Draw(gameTime, spriteBatch);
         }
 

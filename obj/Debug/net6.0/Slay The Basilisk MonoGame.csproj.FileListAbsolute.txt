@@ -53,3 +53,5 @@ D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\El
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\Queen.xnb
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\QueenCD.xnb
 D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\Elements\Vase.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\UI\KeyIcon.xnb
+D:\Studies\Semester C\OOP\Slay The Basilisk MonoGame\bin\Debug\net6.0\Content\UI\Panel.xnb
