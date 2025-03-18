@@ -28,7 +28,7 @@ namespace Slay_The_Basilisk_MonoGame
             _scenes[(int)SceneType.MainMenu] = new MainMenuScene();
             _scenes[(int)SceneType.Game] = new GameScene();
             _scenes[(int)SceneType.Pause] = new PauseMenuScene();
-            _currentSceneType = SceneType.MainMenu;
+            ChangeScene(SceneType.MainMenu);
 
             Game.Graphics.PreferredBackBufferWidth = WindowWidth;
             Game.Graphics.PreferredBackBufferHeight = WindowHeight;

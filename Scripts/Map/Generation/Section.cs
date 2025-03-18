@@ -72,7 +72,13 @@ namespace Slay_The_Basilisk_MonoGame
 
         private void GenerateInnerSectionLayout()
         {
-            
+            if (MathUtil.RollChance(5))
+            {
+                int position = MathUtil.RandomIndex(Size * Size);
+                int x = position % Size;
+                int y = position / Size;
+                SectionLayout[y, x] = new Vase(MapPosition + new Point(x, y));
+            }
         }
         private void GenerateChestSectionLayout()
         {
@@ -109,11 +115,21 @@ namespace Slay_The_Basilisk_MonoGame
             while(enemies.Count > 0)
             {
                 EnemyType enemyType = enemies.Pop();
+
                 bool wasPlaced = false;
-                while (!wasPlaced)
+                List<int> positions = new List<int>(Size * Size);
+
+                for (int i = 0; i < Size * Size; i++)
                 {
-                    int x = MathUtil.RandomIndex(Size);
-                    int y = MathUtil.RandomIndex(Size);
+                    positions.Add(i);
+                }
+
+                while (!wasPlaced && positions.Count>0)
+                {
+                    int position = positions[MathUtil.RandomIndex(positions.Count)];
+                    positions.Remove(position);
+                    int x = position % Size;
+                    int y = position / Size;
 
                     if (SectionLayout[y,x] == EmptyElement.InnerInstance)
                     {

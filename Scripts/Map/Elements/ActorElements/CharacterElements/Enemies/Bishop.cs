@@ -6,7 +6,7 @@ namespace Slay_The_Basilisk_MonoGame
 {
     public class Bishop : EnemyElement
     {
-        public Bishop(Point mapPosition) : base(AssetsManager.GetAsset(Asset.Bishop), AssetsManager.GetAsset(Asset.BishopCD), mapPosition, 5f, GameData.BishopStats) { }
+        public Bishop(Point mapPosition) : base(AssetsManager.GetAsset(Asset.Bishop), AssetsManager.GetAsset(Asset.BishopCD), mapPosition, GameData.BishopRange, GameData.BishopStats) { }
 
         protected override List<Direction> CalculateAvailableDirections()
         {
@@ -79,6 +79,12 @@ namespace Slay_The_Basilisk_MonoGame
             {
                 directions.Add(Direction.NW);
             }
+        }
+
+        public override void Die()
+        {
+            LootManager.GivePlayerLootFromOrigin(LootOrigin.Bishop);
+            base.Die();
         }
     }
 }

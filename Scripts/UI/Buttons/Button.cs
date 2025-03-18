@@ -24,6 +24,8 @@ namespace Slay_The_Basilisk_MonoGame
 
         #region Properties
         public event EventHandler Click;
+
+        public bool IsClickable { get; set; } = true;
         private Rectangle Area
         {
             get
@@ -47,6 +49,8 @@ namespace Slay_The_Basilisk_MonoGame
      
         public void Update(GameTime gameTime)
         {
+            if(!IsClickable) return;  
+            
             _previousMouseState = _currentMouseState;
             _currentMouseState = Mouse.GetState();
             _isHovering = false;
@@ -64,6 +68,8 @@ namespace Slay_The_Basilisk_MonoGame
             {
                 _color = _unhoveredColor;
             }
+
+            if(!IsClickable) _color = Color.DarkRed;
 
 
             base.Draw(gameTime, spriteBatch);
@@ -92,11 +98,5 @@ namespace Slay_The_Basilisk_MonoGame
            
         }
         #endregion
-
-
-
-
-
-
     }
 }

@@ -37,6 +37,11 @@ namespace Slay_The_Basilisk_MonoGame
             base.Draw(gameTime, spriteBatch);
         }
 
+        public override void EnterScene()
+        {
+            _continueButton.IsClickable = RunManager.IsRunActive;
+        }
+
         private static void StartRun(object sender,EventArgs eventArgs)
         {
             RunManager.IsRunActive = false;

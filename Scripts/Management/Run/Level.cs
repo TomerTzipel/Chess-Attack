@@ -31,10 +31,9 @@ namespace Slay_The_Basilisk_MonoGame
                 mapData = GameData.GetMapByLevel(levelIndex);
                 Map = new Map(mapData);
             }
-            catch (Exception ex)
+            catch 
             { 
                 //Will never happen due to RunManager, but it could be an error if someone were to fuck up the code
-                Debug.WriteLine(ex);
                 mapData = GameData.GetMapByLevel(0);
                 Map = new Map(mapData);
             }

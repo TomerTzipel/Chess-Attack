@@ -8,7 +8,7 @@ namespace Slay_The_Basilisk_MonoGame
 {
     public class Queen : EnemyElement
     {
-        public Queen(Point mapPosition) : base(AssetsManager.GetAsset(Asset.Queen), AssetsManager.GetAsset(Asset.QueenCD), mapPosition, 5f, GameData.QueenStats) { }
+        public Queen(Point mapPosition) : base(AssetsManager.GetAsset(Asset.Queen), AssetsManager.GetAsset(Asset.QueenCD), mapPosition, GameData.QueenRange, GameData.QueenStats) { }
 
         protected override List<Direction> CalculateAvailableDirections()
         {
@@ -133,8 +133,12 @@ namespace Slay_The_Basilisk_MonoGame
                     directions.Add(Direction.Up);
                 }
             }
-
-
         }
+        public override void Die()
+        {
+            LootManager.GivePlayerLootFromOrigin(LootOrigin.Queen);
+            base.Die();
+        }
+
     }
 }

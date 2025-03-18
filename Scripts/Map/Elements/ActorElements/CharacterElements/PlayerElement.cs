@@ -1,44 +1,40 @@
-﻿namespace Slay_The_Basilisk_MonoGame
-{
-    public enum ItemType
-    {
-        Key,HealthPotion
-    }
-    public struct Inventory
-    {
-        public int Keys;
-        public int HealthPotions;
+﻿using System.Diagnostics;
 
-        public void AddItem(ItemType item)
-        {
-            switch (item)
-            {
-                case ItemType.Key:
-                    Keys++;
-                    break;
-                case ItemType.HealthPotion:
-                    HealthPotions++;
-                    break;
-            }
-        }
-        //Inventory holder is in charge of checking if the item is at 0 before calling useItem
-        public void UseItem(ItemType item)
-        {
-            switch (item)
-            {
-                case ItemType.Key:
-                    Keys--;
-                    break;
-                case ItemType.HealthPotion:
-                    HealthPotions--;
-                    break;
-            }
-        }
-    }
+namespace Slay_The_Basilisk_MonoGame
+{
+
 
     public class PlayerElement : CharacterElement
     {
         public Inventory Inventory { get; private set; }
+        public override int Damage 
+        {
+            get 
+            {
+                int damage = base.Damage + (Inventory.Items[(int)ItemType.DamageToken] * GameData.PlayerDamageScaling);
+                Debug.WriteLine(damage);
+                return damage;
+            } 
+        }
+        public override double AttackCooldown
+        {
+            get
+            {
+                double lowerBound = GameData.PlayerCooldownLowerBound;
+                double attackCooldown = base.AttackCooldown - (Inventory.Items[(int)ItemType.AttackSpeedToken] * GameData.PlayerAttackSpeedScaling);
+                return attackCooldown < lowerBound ? lowerBound : attackCooldown;
+            }
+        }
+        public override double MoveCooldown
+        {
+            get
+            {
+                double lowerBound = GameData.PlayerCooldownLowerBound;
+                double moveCooldown = base.MoveCooldown - (Inventory.Items[(int)ItemType.SpeedToken] * GameData.PlayerMoveSpeedScaling);
+                return moveCooldown < lowerBound ? lowerBound : moveCooldown;
+            } 
+        }
+        
         public Point MapPosition
         {
             get { return _mapPosition; }
@@ -47,20 +43,26 @@
 
         public PlayerElement() : base(AssetsManager.GetAsset(Asset.Player), AssetsManager.GetAsset(Asset.PlayerCD), new Point(), GameData.PlayerStats) 
         {
-            Inventory = new Inventory { Keys = 0, HealthPotions = 0 };
+            Inventory = new Inventory();
+            Inventory.OnAddMaxHealthToken += AddMaxHealth; 
+
             _timer.Start(0.001d);
         }
         public bool UseKey()
         {
-            if(Inventory.Keys <= 0) return false;
-            Inventory.UseItem(ItemType.Key);
-            return true;
+            return Inventory.UseItem(ItemType.Key);
         }
         public void DrinkHealthPotion()
         {
-            if (Inventory.HealthPotions <= 0) return;
-            Inventory.UseItem(ItemType.HealthPotion);
-            HealthHandler.ModifyCurrentHealthByMaxHealthPercent(25);
+            if (Inventory.UseItem(ItemType.Potion))
+            {
+                HealthHandler.ModifyCurrentHealthByMaxHealthPercent(25);
+            }     
+        }
+
+        private void AddMaxHealth()
+        {
+            HealthHandler.ModifyHealth(50, HealthChangeMode.Max);
         }
 
         public override void Act(Direction direction)

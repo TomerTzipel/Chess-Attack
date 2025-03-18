@@ -6,32 +6,36 @@ namespace Slay_The_Basilisk_MonoGame
 {
     public struct CharacterElementStats
     {
-        public int Damage;
         public int MaxHealth;
-        public double MoveCooldown;
+        public int Damage;
         public double AttackCooldown;
+        public double MoveCooldown;
+        
     }
 
     public abstract class CharacterElement : ActorElement, IMyUpdateable, IHitable
     {
-        protected int _damage;
-        protected double _moveCooldown;
+        protected int _baseDamage;
         protected double _attackCooldown;
-
+        protected double _moveCooldown;
+      
         protected bool _isOnCooldown;
 
         protected Timer _timer;
         protected Texture2D _cooldownSprite;
 
         public HealthHandler HealthHandler { get; private set; }
-
+        public virtual int Damage { get { return _baseDamage; } protected set { _baseDamage = value; } }
+        public virtual double AttackCooldown { get { return _attackCooldown; } protected set { _attackCooldown = value; } }
+        public virtual double MoveCooldown { get { return _moveCooldown; } protected set { _moveCooldown = value; } }
+     
         public CharacterElement(Texture2D regularSprite, Texture2D cooldownSprite, Point mapPosition, CharacterElementStats stats) : base(regularSprite, mapPosition)
         {
             _cooldownSprite = cooldownSprite;
-            _damage = stats.Damage;
-            _moveCooldown = stats.MoveCooldown;
+            _baseDamage = stats.Damage;
             _attackCooldown = stats.AttackCooldown;
-
+            _moveCooldown = stats.MoveCooldown;
+            
             _timer = new Timer();
             _timer.OnTimerOver += HandleTimerOver;
 
@@ -49,17 +53,17 @@ namespace Slay_The_Basilisk_MonoGame
         {
             RunManager.CurrentLevel.Map.MoveElementAtInDirection(_mapPosition, direction);
             _mapPosition.MovePointInDirection(direction);
-            StartCooldown(_moveCooldown);
+            StartCooldown(MoveCooldown);
         }
 
         protected void Attack(IHitable hitable,Direction direction)
         {
-            if (hitable.TakeDamage(_damage))
+            if (hitable.TakeDamage(Damage))
             {
                 Move(direction);
             }
 
-            StartCooldown(_attackCooldown);
+            StartCooldown(AttackCooldown);
         }
 
         protected void StartCooldown(double cooldown)

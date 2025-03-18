@@ -22,7 +22,7 @@ namespace Slay_The_Basilisk_MonoGame
 
         public override void Die()
         {
-            //TODO:GIVE PLAYER SOMETHING
+            LootManager.GivePlayerLootFromOrigin(LootOrigin.Chest);
         }
     }
 }

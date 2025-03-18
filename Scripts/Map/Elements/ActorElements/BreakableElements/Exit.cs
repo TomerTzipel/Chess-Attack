@@ -33,6 +33,7 @@ namespace Slay_The_Basilisk_MonoGame
 
         public override void Die()
         {
+            LootManager.GivePlayerLootFromOrigin(LootOrigin.Level);
             RunManager.NextLevel();
         }
     }

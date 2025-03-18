@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Diagnostics;
 
 namespace Slay_The_Basilisk_MonoGame
 {
@@ -56,7 +57,7 @@ namespace Slay_The_Basilisk_MonoGame
 
             }
 
-            return -1; //Will never reach unless chances array doesn't sum to 100
+            throw new Exception();
         }
         public static int GetPercent(int value, int max)
         {
