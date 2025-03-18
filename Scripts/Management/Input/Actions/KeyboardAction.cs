@@ -11,6 +11,8 @@ namespace ChessOut.Input
     public class KeyboardAction : InputAction
     {
         private Keys _key;
+        private KeyboardState _priorState;
+        private KeyboardState _currentState;
         public KeyboardAction(Keys key, ButtonState buttonState) : this(key, buttonState, EventArgs.Empty) { }
         
         public KeyboardAction(Keys key, ButtonState buttonState, EventArgs eventArgs) : base(eventArgs)
@@ -19,7 +21,9 @@ namespace ChessOut.Input
         }
         public override void CheckAction()
         {
-            if (Keyboard.GetState().IsKeyDown(_key))
+            _priorState = _currentState;
+            _currentState = Keyboard.GetState();
+            if (_currentState.IsKeyDown(_key) && _priorState.IsKeyUp(_key))
             {
                 ExecuteAction(_eventArgs);
             }
