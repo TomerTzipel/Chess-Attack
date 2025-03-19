@@ -73,7 +73,7 @@ namespace ChessOut.MapSystem.Elements
 
         protected void Move(Direction direction)
         {
-            RunManager.CurrentLevel.Map.MoveElementAtInDirection(_mapPosition, direction);
+            RunManager.CurrentLevel.Map.MoveElementAtInDirection(_mapPosition, direction,this);
             _mapPosition.MovePointInDirection(direction);
             StartCooldown(MoveCooldown);
         }

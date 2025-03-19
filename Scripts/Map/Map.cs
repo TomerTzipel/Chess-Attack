@@ -29,8 +29,10 @@ namespace ChessOut.MapSystem
         }
 
         //Whoever calls the function is in charge of making sure it can override whoever it is walking into and that it is within map bounds
-        public void MoveElementAtInDirection(Point position, Direction direction)
+        public void MoveElementAtInDirection(Point position, Direction direction, MapElement element)
         {
+            if (ElementAt(position) != element) return;
+
             Point newPosition = new Point(position).MovePointInDirection(direction);
             _dataMap[newPosition.Y, newPosition.X] = _dataMap[position.Y, position.X];
             _dataMap[position.Y, position.X] = EmptyElement.InnerInstance;
