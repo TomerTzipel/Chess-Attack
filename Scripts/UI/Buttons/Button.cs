@@ -1,14 +1,15 @@
 ﻿
 namespace ChessOut.UI
 {
+    //A clickable button that trigger a click event
+    //Shows then the button is hovered or when it is unclickble
     public class Button : UIElement,IMyUpdateable
     {
         private string _text;
         private SpriteFont _font;
         private Color _textColor;
 
-        private MouseState _previousMouseState;
-        private MouseState _currentMouseState;
+        private MouseAction _clickAction;
 
         private bool _isHovering;
         private Color _unhoveredColor;
@@ -23,11 +24,10 @@ namespace ChessOut.UI
             }
         }
 
-        public event EventHandler Click;
+        public event EventHandler OnClick;
 
         public Button(Vector2 position,float scale, Texture2D sprite, string text) : this(position, scale, sprite, text, Color.Gray, Color.White, Color.Black) { }
         public Button(Vector2 position, Texture2D sprite, string text) : this(position,1f, sprite, text, Color.Gray, Color.White, Color.Black) { }
-
         public Button(Vector2 position,float scale, Texture2D sprite, string text, Color hoverColor, Color unhoveredColor,Color textColor) : base(position,scale, unhoveredColor, sprite)
         {
             _font = AssetsManager.Font;
@@ -35,17 +35,21 @@ namespace ChessOut.UI
             _unhoveredColor = unhoveredColor;
             _hoveredColor = hoverColor;
             _textColor = textColor;
+
+            //Sets up the LMB action
+            _clickAction = new MouseAction(MouseButton.Left);
+            _clickAction.Action += CheckButtonActivation;
         }
      
         public void Update(GameTime gameTime)
         {
-            if(!IsClickable) return;  
-            
-            _previousMouseState = _currentMouseState;
-            _currentMouseState = Mouse.GetState();
+            //Doesn't allow ativation if not clickable
+            if(!IsClickable) return;
+
+            //Checks for hovering and if the button was clicked
             _isHovering = false;
-            CheckHovering();
-            CheckActivation();
+            CheckIsMouseHovering();
+            _clickAction.CheckIfActionTriggered();
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -64,28 +68,31 @@ namespace ChessOut.UI
 
             base.Draw(gameTime, spriteBatch);
 
+            //Draws the string if it isn't null
             if (string.IsNullOrEmpty(_text)) return;
 
+            //Makes sure to draw the string in the center of the button
             float x = (Area.X + (Area.Width / 2) - ((_font.MeasureString(_text).X / 2)*_scale));
             float y = (Area.Y + (Area.Height / 2) - ((_font.MeasureString(_text).Y / 2) * _scale));
 
             spriteBatch.DrawString(_font, _text, new Vector2(x, y), _textColor,0,Vector2.Zero,_scale,SpriteEffects.None,0f);
         }
 
-        private void CheckHovering()
+        private void CheckIsMouseHovering()
         {
-            if (Area.Contains(_currentMouseState.X, _currentMouseState.Y))
+            if (Area.Contains(Mouse.GetState().X, Mouse.GetState().Y))
             {
-                _isHovering |= true;
+                _isHovering = true;
             }
         }
-        private void CheckActivation()
-        {
-            if(_isHovering && _currentMouseState.LeftButton == ButtonState.Released && _previousMouseState.LeftButton == ButtonState.Pressed)
+
+        private void CheckButtonActivation(object sender, EventArgs args)
+        {   
+            //Only if the mouse hovers the button when we click we invoke OnClick
+            if (_isHovering)
             {
-                Click?.Invoke(this,EventArgs.Empty);
-            }    
-           
+                OnClick?.Invoke(this,EventArgs.Empty);
+            }   
         }
     }
 }

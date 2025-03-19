@@ -8,6 +8,7 @@ namespace ChessOut.MapSystem.Elements.Enemies
     {
         public Bishop(Point mapPosition) : base(AssetsManager.GetAsset(Asset.Bishop), AssetsManager.GetAsset(Asset.BishopCD), mapPosition, GameData.BishopRange, GameData.BishopStats) { }
 
+        //Only moves diaggonaly
         protected override List<Direction> CalculateAvailableDirections()
         {
             List<Direction> availableDirections = new List<Direction>(4);
@@ -26,6 +27,8 @@ namespace ChessOut.MapSystem.Elements.Enemies
 
             return availableDirections;
         }
+
+        //Will move to the quardent the player is in from the bishop position
         protected override void CalculateDirectionsToPlayer(List<Direction> directions)
         {
             Point playerPosition = new Point(RunManager.PlayerPosition);

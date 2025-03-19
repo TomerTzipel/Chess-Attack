@@ -1,25 +1,21 @@
-﻿using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace ChessOut.Input
 {
-
+    //An InputAction that checks for triggers from the keyboard.
+    //Actions are active only if in the current state the trigger is perssed and in the last it was released
     public class KeyboardAction : InputAction
     {
         private Keys _key;
         private KeyboardState _priorState;
         private KeyboardState _currentState;
-        public KeyboardAction(Keys key, ButtonState buttonState) : this(key, buttonState, EventArgs.Empty) { }
+        public KeyboardAction(Keys key) : this(key, EventArgs.Empty) { }
         
-        public KeyboardAction(Keys key, ButtonState buttonState, EventArgs eventArgs) : base(eventArgs)
+        public KeyboardAction(Keys key, EventArgs eventArgs) : base(eventArgs)
         {
             _key = key;
         }
-        public override void CheckAction()
+        public override void CheckIfActionTriggered()
         {
             _priorState = _currentState;
             _currentState = Keyboard.GetState();

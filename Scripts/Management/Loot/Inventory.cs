@@ -1,6 +1,8 @@
 ﻿
 namespace ChessOut.Loot
 {
+    //Encapsulates and array of items, allows to add/remove items and getting the current amount of an item
+    //Uses the ItemType enum as an indexer
     public class Inventory
     {
         public int[] Items { get; private set; }
@@ -17,13 +19,15 @@ namespace ChessOut.Loot
         }
         public void AddItem(ItemType item)
         {
+            //We need this so player knows to raise Max HP on the Max Health Token pick up
             if (item == ItemType.MaxHealthToken) OnAddMaxHealthToken?.Invoke();
+
             Items[(int)item]++;
 
             OnInventoryChange?.Invoke(this);
         }
 
-        public bool UseItem(ItemType item)
+        public bool RemoveItem(ItemType item)
         {
             if (Items[(int)item] <= 0) return false;
             Items[(int)item]--;

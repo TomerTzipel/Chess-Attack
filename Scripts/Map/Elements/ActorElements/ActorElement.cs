@@ -7,7 +7,8 @@ namespace ChessOut.MapSystem.Elements
     {
         protected Texture2D _sprite;
         protected Point _mapPosition;
-            
+       
+        //The position on the screen
         protected Vector2 WorldPosition
         {
             get 

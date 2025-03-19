@@ -2,7 +2,7 @@
 namespace ChessOut.Utility
 {
     
-    //An int based Vector2, used for the map matrices
+    //An int based Vector2, used for the positions on the map
     public class Point
     {
         private Vector2 _vector;
@@ -45,6 +45,8 @@ namespace ChessOut.Utility
             _vector = new Vector2(point.X, point.Y);
         }
 
+        //Moves the point in the given direction
+        //Return the point to string multiple calls
         public Point MovePointInDirection(Direction direction)
         {
             switch (direction)
@@ -91,6 +93,8 @@ namespace ChessOut.Utility
         {
             return p1._vector == p2._vector;
         }
+
+        //Athimetic operators for points
         public static Point operator +(Point left, Point right)
         {
             return new Point(left.X + right.X, left.Y + right.Y);

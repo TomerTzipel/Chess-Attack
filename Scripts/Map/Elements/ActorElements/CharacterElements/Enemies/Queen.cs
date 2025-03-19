@@ -10,6 +10,7 @@ namespace ChessOut.MapSystem.Elements.Enemies
     {
         public Queen(Point mapPosition) : base(AssetsManager.GetAsset(Asset.Queen), AssetsManager.GetAsset(Asset.QueenCD), mapPosition, GameData.QueenRange, GameData.QueenStats) { }
 
+        //Moves in all directions
         protected override List<Direction> CalculateAvailableDirections()
         {
             List<Direction> availableDirections = new List<Direction>(4);
@@ -26,6 +27,11 @@ namespace ChessOut.MapSystem.Elements.Enemies
 
             return availableDirections;
         }
+
+        //Acts like the rook and the bishop, moving directly to the player if a line or a diagonnal is available,
+        //Otherwise moves in the direction of the quadrent but knows which one is better
+        //depending on player position to the quradent diagonal created from the queen to the player quadrent
+        //In simpler terms she hunts the player down as efficently as possiable without searching algorithms like BFS,DFS, A* etc.
         protected override void CalculateDirectionsToPlayer(List<Direction> directions)
         {
             Point playerPosition = new Point(RunManager.PlayerPosition);

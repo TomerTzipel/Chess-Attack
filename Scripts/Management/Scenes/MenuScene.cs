@@ -1,6 +1,7 @@
 ﻿
 namespace ChessOut.Scenes
 {
+    //A scene that has buttons, and serves as a basic menu
     public abstract class MenuScene : Scene
     {
         protected Button[] _buttons;

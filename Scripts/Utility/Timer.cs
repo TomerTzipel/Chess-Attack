@@ -1,11 +1,14 @@
 ﻿
 namespace ChessOut.Utility
 {
+    //A simple timer that check if the timer is up with deltaTime and its duration
     public class Timer
     {
         private double _currentTime;
         private double _duration; 
         public bool IsActive { get; private set; } = false;
+
+        //Returns how much of the duration was completed
         public double CompletionPercent 
         { 
             get 
@@ -20,6 +23,7 @@ namespace ChessOut.Utility
 
         public Timer() { }
 
+        //Starts the timer
         public void Start(double duration)
         {
             IsActive = true;
@@ -27,6 +31,7 @@ namespace ChessOut.Utility
             _duration = duration;
         }
 
+        //Adds delta time to the timer
         public void Tick(double deltaTime) 
         {
             _currentTime += deltaTime;

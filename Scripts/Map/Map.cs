@@ -5,10 +5,16 @@ using System.Collections.Generic;
 
 namespace ChessOut.MapSystem
 {
+    //Handles the game map
+    //Both the Tile map and the Data map
     public class Map : IMyDrawable
     {
         private readonly int _size;
+
+        //A map of the background tiles
         private ActorElement[,] _tileMap;
+
+        //The actual data of the map (enemies, player, objects, etc)
         private MapElement[,] _dataMap;
         public Map(MapData mapData) 
         { 
@@ -21,6 +27,8 @@ namespace ChessOut.MapSystem
             //Creating the actual matrix the data sits on during the level
             GenerateDataMap(sectionsMap, mapData);
         }
+
+        //Return the element at the given position from the data map
         public MapElement ElementAt(Point position)
         {
             if (position.Y < 0 || position.X < 0 || position.Y >= _size || position.X >= _size) return null;
@@ -46,12 +54,16 @@ namespace ChessOut.MapSystem
             {
                 for (int j = camera.Origin.X; j < camera.Origin.X + camera.Width; j++)
                 {
+                    //The camera can be outside of the matrix borders, so we make sure not to draw there
                     if (i < 0 || j < 0 || i >= _size || j >= _size) continue;
 
+                    //Makes sure to not draw non existing tiles, which also means no data can be there to draw as well
                     if (_tileMap[i, j] == null) continue;
 
+                    //Draws the background tile
                     _tileMap[i, j].Draw(gameTime, spriteBatch);
 
+                    //Draws the element on the tile if there is one there
                     if (_dataMap[i, j] is IMyDrawable drawable) drawable.Draw(gameTime, spriteBatch);
 
                 }
@@ -90,6 +102,7 @@ namespace ChessOut.MapSystem
             }        
         }
 
+        //Check if the Empty Outer Element is a world border if any neighboring tile is an Empty Inner Element
         private bool IsWorldBorder(int i,int j)
         {
             Point mapPosition = new Point(j, i);
@@ -116,7 +129,7 @@ namespace ChessOut.MapSystem
             return false;
         }
         
-        
+        //Creates the tile map from the sections map, by giving every position with an Empty Inner Element a randomized tile
         private void GenerateTileMap(SectionsMap sectionsMap)
         {
             _tileMap = new ActorElement[_size, _size];
@@ -138,6 +151,7 @@ namespace ChessOut.MapSystem
             }
         }
 
+        //Returns a tile that is either dark or light variant depending on the position
         private void GenerateTile(int i,int j)
         {
             Point mapPosition = new Point(j, i);

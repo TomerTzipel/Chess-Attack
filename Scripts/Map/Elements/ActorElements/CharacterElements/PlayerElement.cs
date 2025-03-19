@@ -1,9 +1,12 @@
 ﻿
 namespace ChessOut.MapSystem.Elements
 {
+    //The player element, hold the inventory and stats
     public class PlayerElement : CharacterElement
     {
         public Inventory Inventory { get; private set; }
+
+        //Calculates the stats in accordance with the inventory
         public override int Damage 
         {
             get 
@@ -42,20 +45,22 @@ namespace ChessOut.MapSystem.Elements
             Inventory = new Inventory();
             Inventory.OnAddMaxHealthToken += AddMaxHealth; 
 
+            //Starts the timer so it will be full when the game start so the player could move immidiatly  
             _timer.Start(0.001d);
         }
         public bool UseKey()
         {
-            return Inventory.UseItem(ItemType.Key);
+            return Inventory.RemoveItem(ItemType.Key);
         }
         public void DrinkHealthPotion()
         {
-            if (Inventory.UseItem(ItemType.Potion))
+            if (Inventory.RemoveItem(ItemType.Potion))
             {
                 HealthHandler.ModifyCurrentHealthByMaxHealthPercent(25);
             }     
         }
 
+        //Acts in the direction given from the player input
         public override void Act(Direction direction)
         {
             if (_isOnCooldown) return;
@@ -63,14 +68,16 @@ namespace ChessOut.MapSystem.Elements
             Point targetPosition = new Point(_mapPosition).MovePointInDirection(direction);
             MapElement elementInDirection = RunManager.CurrentLevel.Map.ElementAt(targetPosition);
 
+            //Can't move to outside the map or to obstacles
             if (elementInDirection == null || elementInDirection is IObstacle) return;
 
+            //Moves onto an empty element
             if (elementInDirection is EmptyElement)
             {
                 Move(direction);
                 return;
             }
-
+            //Attacks a hitable elemnt
             if(elementInDirection is IHitable hitable)
             {
                 Attack(hitable,direction);

@@ -2,7 +2,6 @@
 
 namespace ChessOut.Run
 {
-   
     public class Level : IMyDrawable, IMyUpdateable
     {
         public Camera Camera { get; private set; }
@@ -35,6 +34,7 @@ namespace ChessOut.Run
         }
         public void Update(GameTime gameTime)
         {
+            //Ticks the timers of each enemy and the player
             foreach (var enemy in EnemyElement._enemies) 
             {
                 enemy.Update(gameTime);

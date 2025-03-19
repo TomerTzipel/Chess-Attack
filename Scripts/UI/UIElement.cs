@@ -1,6 +1,7 @@
 ﻿
 namespace ChessOut.UI
 {
+    //A father class for UI elements, can draw a sprite
     public class UIElement : IMyDrawable
     {
         protected Vector2 _position;

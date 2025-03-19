@@ -3,11 +3,10 @@
 
 namespace ChessOut.MapSystem.Elements
 {
-    //Didn't have time to add cosmetics as I wanted, but you can understand easily how it would work
+    //An element that blocks movement from character elements
+    //There are none currently as I didn't have time to add cosmetics
     public class ObstacleElement : ActorElement, IObstacle
     {
-        public ObstacleElement(Texture2D sprite, Point mapPosition) : base(sprite, mapPosition)
-        {
-        }
+        public ObstacleElement(Texture2D sprite, Point mapPosition) : base(sprite, mapPosition) { }
     }
 }

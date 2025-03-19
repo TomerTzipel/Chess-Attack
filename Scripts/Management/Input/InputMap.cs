@@ -1,6 +1,7 @@
 ﻿
 namespace ChessOut.Input
 {
+    //Encapsulates a List of InputAction, allows to add an action and to check all actions for activation.
     public class InputMap
     {
         private List<InputAction> _inputActions;
@@ -20,7 +21,7 @@ namespace ChessOut.Input
         {
             foreach (var action in _inputActions)
             {
-                action.CheckAction();
+                action.CheckIfActionTriggered();
             }
         }
     }

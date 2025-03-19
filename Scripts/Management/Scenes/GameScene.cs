@@ -1,30 +1,24 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using Microsoft.Xna.Framework.Input;
-
-
+﻿
 namespace ChessOut.Scenes
 {
-    public class MovementEventArgs : EventArgs
-    {
-        public Direction Direction { get; set; }
-    }
+    //The scene of the game, managed by the Run Manager
+    //Handles player keyboard input, as it happens to be the only non menu scene.
     public class GameScene : Scene
     {
         public GameScene() 
         {
             //Mapping player controls to the input map.
-            _inputMap.AddAction(new KeyboardAction(Keys.W, ButtonState.Pressed, new MovementEventArgs { Direction = Direction.Up })).Action += RunManager.HandlePlayerInput;
-            _inputMap.AddAction(new KeyboardAction(Keys.S, ButtonState.Pressed, new MovementEventArgs { Direction = Direction.Down })).Action += RunManager.HandlePlayerInput;
-            _inputMap.AddAction(new KeyboardAction(Keys.A, ButtonState.Pressed, new MovementEventArgs { Direction = Direction.Left })).Action += RunManager.HandlePlayerInput;
-            _inputMap.AddAction(new KeyboardAction(Keys.D, ButtonState.Pressed, new MovementEventArgs { Direction = Direction.Right })).Action += RunManager.HandlePlayerInput;
-            _inputMap.AddAction(new KeyboardAction(Keys.Escape, ButtonState.Pressed)).Action += OnPause;
-            _inputMap.AddAction(new KeyboardAction(Keys.Q, ButtonState.Pressed)).Action += DrinkPotion;
+            _inputMap.AddAction(new KeyboardAction(Keys.W, new MovementEventArgs { Direction = Direction.Up })).Action += RunManager.HandlePlayerInput;
+            _inputMap.AddAction(new KeyboardAction(Keys.S, new MovementEventArgs { Direction = Direction.Down })).Action += RunManager.HandlePlayerInput;
+            _inputMap.AddAction(new KeyboardAction(Keys.A, new MovementEventArgs { Direction = Direction.Left })).Action += RunManager.HandlePlayerInput;
+            _inputMap.AddAction(new KeyboardAction(Keys.D, new MovementEventArgs { Direction = Direction.Right })).Action += RunManager.HandlePlayerInput;
+            _inputMap.AddAction(new KeyboardAction(Keys.Escape)).Action += OnPause;
+            _inputMap.AddAction(new KeyboardAction(Keys.Q)).Action += DrinkPotion;
         }
 
         public override void EnterScene()
         {
+            //Checks if a new run needs to be created, or continue an existing one
             if (!RunManager.IsRunActive)
             {
                 StartNewRun();

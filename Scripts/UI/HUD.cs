@@ -5,6 +5,7 @@ using System;
 
 namespace ChessOut.UI
 {
+    //Draws the player's inventory and the player HP bar
     public class HUD : IMyDrawable
     {
         //Placment Data
@@ -41,9 +42,11 @@ namespace ChessOut.UI
 
         public HUD(PlayerElement player) 
         {
+            //Subscribe to events that update the HUD
             player.Inventory.OnInventoryChange += HandleInventoryChange;
             player.HealthHandler.OnHealthChanged += HandleHealthChange;
 
+            //Positiong and create all the HUD elements
             _iconStartPosition = new Vector2(_panelPosition.X+32, _panelPosition.Y+32);
             _keyIconPosition = _iconStartPosition;
             _potionIconPosition = new Vector2(_iconStartPosition.X, _iconStartPosition.Y + IconSize + VerticalIconPad);
@@ -86,20 +89,13 @@ namespace ChessOut.UI
             _hpBar.Draw(gameTime, spriteBatch);
         }
 
+        //Update the health bar on health changes
         private void HandleHealthChange(object sender, HealthChangeEventArgs args)
         {
-
             _hpBar.SetValue((float)args.NewHealth / args.MaxHealth);
-            switch (args.mode)
-            {
-                case HealthChangeMode.Current:
-                    break;
-                case HealthChangeMode.Max:
-                    break;
-            }
-
         }
 
+        //Update the inventory showcase when items are moved in or out of the player's inventory
         private void HandleInventoryChange(Inventory inventory)
         {
             _keyCounter.UpdateText($"x{inventory.GetItemAmount(ItemType.Key)}");
@@ -107,10 +103,6 @@ namespace ChessOut.UI
             _damageCounter.UpdateText($"x{inventory.GetItemAmount(ItemType.DamageToken)}");
             _attackSpeedCounter.UpdateText($"x{inventory.GetItemAmount(ItemType.AttackSpeedToken)}");
             _speedCounter.UpdateText($"x{inventory.GetItemAmount(ItemType.SpeedToken)}");
-        }
-
-     
-
-       
+        } 
     }
 }

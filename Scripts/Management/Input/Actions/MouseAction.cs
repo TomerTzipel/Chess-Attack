@@ -1,38 +1,43 @@
-﻿using Microsoft.Xna.Framework.Input;
-
+﻿
 namespace ChessOut.Input
 {
+    //An InputAction that checks for triggers from the mouse.
+    //Actions are active only if in the current state the trigger is perssed and in the last it was released
     public class MouseAction : InputAction
     {
         private MouseButton _button;
-        private ButtonState _buttonState;
 
-        public MouseAction(MouseButton button, ButtonState buttonState) : this(button, buttonState, EventArgs.Empty) { }
+        private MouseState _priorState;
+        private MouseState _currentState;
+
+        public MouseAction(MouseButton button) : this(button, EventArgs.Empty) { }
       
-        public MouseAction(MouseButton button, ButtonState buttonState,EventArgs eventArgs) : base(eventArgs)
+        public MouseAction(MouseButton button,EventArgs eventArgs) : base(eventArgs)
         {
             _button = button;
-            _buttonState = buttonState;
         }
 
-        public override void CheckAction()
+        public override void CheckIfActionTriggered()
         {
+            _priorState = _currentState;
+            _currentState = Mouse.GetState();
+
             switch (_button)
             {
                 case MouseButton.Right:
-                    if (Mouse.GetState().RightButton == _buttonState)
+                    if (_currentState.RightButton == ButtonState.Pressed && _priorState.RightButton == ButtonState.Released)
                     {
                         ExecuteAction(EventArgs.Empty);
                     }
                     break;
                 case MouseButton.Left:
-                    if (Mouse.GetState().LeftButton == _buttonState)
+                    if (_currentState.LeftButton == ButtonState.Pressed && _priorState.LeftButton == ButtonState.Released)
                     {
                         ExecuteAction(EventArgs.Empty);
                     }
                     break;
                 case MouseButton.Middle:
-                    if (Mouse.GetState().MiddleButton == _buttonState)
+                    if (_currentState.MiddleButton == ButtonState.Pressed && _priorState.MiddleButton == ButtonState.Released)
                     {
                         ExecuteAction(EventArgs.Empty);
                     }

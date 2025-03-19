@@ -3,22 +3,17 @@ namespace ChessOut.Utility
 {
     public static class MathUtil
     {
-        //Chances that are part of the procedural generator
+        //A chance that is key to the procedural generator, Do not touch!
         public const int CONTINUE_CHANCE = 69;
-        public const int BIOME_CHANCE = 50;
 
         private static readonly Random numberGenerator = new Random();
-
-        public static int RandomPrecent()
-        {
-            return numberGenerator.Next(1,101);
-        }
 
         public static int RandomIndex(int length)
         {
             return numberGenerator.Next(0, length);
         }
 
+        //Max Inclusive
         public static int RandomRange(int min, int max)
         {
             return numberGenerator.Next(min, max + 1);
@@ -35,7 +30,9 @@ namespace ChessOut.Utility
 
             return false;
         }
-        public static int RandomWeightedIndex(int[] chances)
+
+        //Will throw exception if the array doesn't sum to 100!
+        public static int RandomIndexFromPercentArray(int[] chances)
         {
             int chanceAdder = 0;
             int chance;
@@ -56,11 +53,17 @@ namespace ChessOut.Utility
 
             throw new Exception();
         }
+
+        //Return how much value is of max in percent
         public static int GetPercent(int value, int max)
         {
             return (int)(((float)value / max) * 100f);
         }
 
-
+        //we do it from 1-100, so if the chance is zero it will never happen, as it can't be >= to these values
+        private static int RandomPrecent()
+        {
+            return numberGenerator.Next(1, 101);
+        }
     }
 }

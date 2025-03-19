@@ -4,7 +4,8 @@ using System.Linq;
 
 namespace ChessOut.MapSystem
 {
-    internal class SectionsMap
+    //The procedural generation class, results in a map of sections
+    public class SectionsMap
     {
         protected readonly int _size;
         private readonly int _numberOfInnerSections;
@@ -93,62 +94,75 @@ namespace ChessOut.MapSystem
             }
         }
 
-        //Good Luck :D
+        //Read the algorithm explanation in the documantation
         private void GenerateAdjacentSections(Point sectionPosition, ref int numberOfSectionsGenerated)
         {
+            //As long as we still have sections to generate and we aren't a discontinue section we contine to generate sections from the current section
             while (SectionAt(sectionPosition).Type != SectionType.Discontinue && numberOfSectionsGenerated < _numberOfInnerSections)
             {
+                //Looks for a direction to generate a new section
                 Direction chosenDirection;
                 bool wasDirectionFound = ChooseDirection(sectionPosition, out chosenDirection);
 
                 if (!wasDirectionFound)
                 {
+                    //There are no legal direction left
                     SectionType sectionType = SectionAt(sectionPosition).Type;
 
+                    //If we aren't a start or psuedo we are marked discontinue
                     if (sectionType != SectionType.Start && sectionType != SectionType.PsuedoStart)
                     {
                         SectionAt(sectionPosition).Type = SectionType.Discontinue;
                         return;
                     }
 
+                    //We need to attempt to break free
                     Point psuedoStartSectionPosition;
 
                     if (!TryBreakFree(sectionPosition, out psuedoStartSectionPosition))
                     {
+                        //We failed to break free so we abort this generation attempt
                         numberOfSectionsGenerated = _numberOfInnerSections + 1;
                     }
                     else
                     {
+                        //We Broke free and continue generation
                         GenerateAdjacentSections(psuedoStartSectionPosition, ref numberOfSectionsGenerated);
                     }
 
                     return;
                 }
 
+                //We found a direction to generate a new section
                 Point newSectionPosition = new Point(sectionPosition.X, sectionPosition.Y);
                 newSectionPosition.MovePointInDirection(chosenDirection);
 
                 GenerateSectionAt(newSectionPosition);
                 numberOfSectionsGenerated++;
 
+                //Check if it was the last section
                 if (numberOfSectionsGenerated >= _numberOfInnerSections)
                 {
                     SectionAt(newSectionPosition).Type = SectionType.Exit;
                     return;
                 }
 
+                //Decide if we generate more sections from the generated section
                 DecideIfEndSection(newSectionPosition);
                 if (SectionAt(newSectionPosition).Type != SectionType.End)
                 {
                     GenerateAdjacentSections(newSectionPosition, ref numberOfSectionsGenerated);
                 }
 
+                //Decide if we choose to stop generating sections from the current section
                 if (SectionAt(sectionPosition).Type != SectionType.Start && SectionAt(sectionPosition).Type != SectionType.PsuedoStart)
                 {
                     DecideIfDiscontinuedSection(sectionPosition);
                 }
             }
         }
+
+        //Tries to break free from the situation where start/psuedoStart is circled by end or discontinue sections
         private bool TryBreakFree(Point sectionPosition, out Point nextPosition)
         {
             List<Direction> directions = new List<Direction>
@@ -224,6 +238,7 @@ namespace ChessOut.MapSystem
             return MathUtil.RollChance(MathUtil.CONTINUE_CHANCE);
         }
 
+        //Looks for a legal direction from the section position
         private bool ChooseDirection(Point sectionPosition,out Direction direction)
         {
             List<Direction> directions = new List<Direction>
@@ -242,7 +257,7 @@ namespace ChessOut.MapSystem
             {
                 chosenDirectionIndex = MathUtil.RandomIndex(directions.Count);
                 chosenDirection = directions.ElementAt(chosenDirectionIndex);
-                isDirectionAvailable = CheckDirection(sectionPosition, chosenDirection);
+                isDirectionAvailable = IsDirectionAvailable(sectionPosition, chosenDirection);
                 if (isDirectionAvailable)
                 {
                     direction = chosenDirection;
@@ -256,7 +271,7 @@ namespace ChessOut.MapSystem
 
         }
 
-        private bool CheckDirection(Point sectionPosition, Direction direction)
+        private bool IsDirectionAvailable(Point sectionPosition, Direction direction)
         {
             Point directedSectionPosition = new Point(sectionPosition.X, sectionPosition.Y);
             directedSectionPosition.MovePointInDirection(direction);

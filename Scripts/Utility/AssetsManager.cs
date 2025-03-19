@@ -60,6 +60,7 @@ namespace ChessOut.Utility
             return Assets[asset];
         }
 
+        //Return a random tile asset by the given variant
         public static Texture2D RandomTileByVariant(TileVariant variant) 
         {
             int chosenIndex = MathUtil.RandomIndex(Tiles.GetLength(1));

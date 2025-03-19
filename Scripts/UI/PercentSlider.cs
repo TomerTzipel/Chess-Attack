@@ -1,6 +1,7 @@
 ﻿
 namespace ChessOut.UI
 {
+    //A slide that goes from 0-1 depending on the float value
     public class PercentSlider : UIElement
     {
         private float _value;
@@ -12,7 +13,6 @@ namespace ChessOut.UI
         }
         public PercentSlider(Vector2 position,float scale, Color color, Texture2D sprite,Texture2D fillSprite) : this(position,scale, color, sprite, fillSprite,1f) { }
       
-
         public void SetValue(float value)
         {
             _value = Math.Clamp(value, 0f, 1f);

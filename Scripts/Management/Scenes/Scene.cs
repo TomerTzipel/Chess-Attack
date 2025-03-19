@@ -1,7 +1,7 @@
 ﻿
 namespace ChessOut.Scenes
 {
-   
+   //A class handling what is currently drawn,updates and active player input
     public abstract class Scene : IMyDrawable,IMyUpdateable
     {
         protected InputMap _inputMap;

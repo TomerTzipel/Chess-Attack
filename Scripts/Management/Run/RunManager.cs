@@ -1,6 +1,7 @@
 ﻿
 namespace ChessOut.Run
 {
+    //A static class managing the game when a run is active (whenever we are in the game scene)
     public static class RunManager
     {
         private static HUD _hud;
@@ -12,6 +13,8 @@ namespace ChessOut.Run
         public static bool IsRunActive { get; set; } = false;
 
         public static Point PlayerPosition { get { return Player.MapPosition; } }
+
+        //Allows for enemy progression depening on run completion percent
         public static Difficulity CurrentDifficulity 
         { 
             get 
@@ -23,6 +26,7 @@ namespace ChessOut.Run
             } 
         }
 
+        //Starts a new Run. Generates the player, the first level and the HUD
         public static void StartRun(int numberOfLevels)
         {
             IsRunActive = true;
@@ -37,9 +41,12 @@ namespace ChessOut.Run
             StartLevel(0);
         }
 
+        //Moves the player to the next level
         public static void NextLevel()
         {
             _levelCount++;
+
+            //Checking if the run is over
             if(_levelCount >= _numberOfLevels)
             {
                 EndRun(true);
@@ -49,6 +56,7 @@ namespace ChessOut.Run
             StartLevel(_levelCount);
         }
 
+        //Sets the run result so the game over scene knows what to display
         public static void EndRun(bool runResult)
         {
             IsRunActive = false;
@@ -65,6 +73,8 @@ namespace ChessOut.Run
             CurrentLevel.Draw(gameTime, spriteBatch);
             _hud.Draw(gameTime, spriteBatch);
         }
+
+        //Acts in the direction detected from the player's movement input (WASD)
         public static void HandlePlayerInput(object sender, EventArgs args)
         {
             Player.Act(((MovementEventArgs)args).Direction);
@@ -73,6 +83,8 @@ namespace ChessOut.Run
         private static void StartLevel(int levelIndex)
         {
             CurrentLevel = new Level(Player, levelIndex);
+
+            //Turns on the AI of the enemies in the level
             foreach (var enemy in EnemyElement._enemies)
             {
                 enemy.StartAI();

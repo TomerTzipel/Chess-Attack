@@ -8,6 +8,7 @@ namespace ChessOut.MapSystem.Elements.Enemies
     {
         public Rook(Point mapPosition) : base(AssetsManager.GetAsset(Asset.Rook),AssetsManager.GetAsset(Asset.RookCD), mapPosition, GameData.RookRange, GameData.RookStats) { }
 
+        //Only moves in straight lines
         protected override List<Direction> CalculateAvailableDirections()
         {
             List<Direction> availableDirections = new List<Direction>(4);
@@ -26,6 +27,9 @@ namespace ChessOut.MapSystem.Elements.Enemies
             
             return availableDirections;
         }
+
+        //If the player is on a line to the rook it will move in that direction,
+        //otherwise will move towards the quardent the player is in
         protected override void CalculateDirectionsToPlayer(List<Direction> directions)
         {
             Point playerPosition = new Point(RunManager.PlayerPosition);

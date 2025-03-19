@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace ChessOut.Input
 {
+    //An abstract class for triggering event from user input
+    //Uses EventHandler with EventArgs to allow for creating different args with inheritance of EventArgs
     public abstract class InputAction
     {
         protected EventArgs _eventArgs;
@@ -17,7 +15,9 @@ namespace ChessOut.Input
             _eventArgs = eventArgs;
         }
 
-        public abstract void CheckAction();
+        //Children define what they check for activation,
+        
+        public abstract void CheckIfActionTriggered();
 
         protected void ExecuteAction(EventArgs eventArgs)
         {

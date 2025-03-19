@@ -1,18 +1,16 @@
 ﻿
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 namespace ChessOut.MapSystem
 {
-    
-    internal class Section
+    //A section of the map that is procedurally generated in SectionMap
+    //Is later translated to the actual map in Map
+    public class Section
     {
         private int Size { get {  return GameData.SectionSize; } }
 
-        public Point MapPosition { get; private set; } //top left (0,0) of the section
+        public Point MapPosition { get; private set; } //The position of the top left map element of the layout if it were in the actual map
 
-        public Point SectionMapPosition { get; private set; }
+        public Point SectionMapPosition { get; private set; }//The position of the section in the SectionsMap
 
         public MapElement[,] SectionLayout { get; private set; }
         public SectionType Type { get; set; }
@@ -38,7 +36,7 @@ namespace ChessOut.MapSystem
                 }
             }
         }
-
+        //Generates the section's layout with map elements by section type
         public void GenerareLayout()
         {
             switch (Type)
@@ -63,7 +61,7 @@ namespace ChessOut.MapSystem
             }
 
         }
-
+        //Section layout generation functions, add to the section layout the actual map elements depending on the section type
         private void GenerateInnerSectionLayout()
         {
             if (MathUtil.RollChance(5))
@@ -74,17 +72,20 @@ namespace ChessOut.MapSystem
                 SectionLayout[y, x] = new Vase(MapPosition + new Point(x, y));
             }
         }
+        //Places a chest in the center of the layout
         private void GenerateChestSectionLayout()
         {
             Point mapPosition = MapPosition + new Point(Size / 2, Size / 2);
             SectionLayout[Size / 2, Size / 2] = new Chest(mapPosition);
         }
-        
+        //Places an exit in the center of the layout
         private void GenerateExitSectionLayout()
         {
             Point mapPosition = MapPosition + new Point(Size / 2, Size / 2);
             SectionLayout[Size / 2, Size / 2] = new Exit(mapPosition);
         }
+
+        //Places the player in the center of the layout
         private void GenerateStartSectionLayout()
         {
             SectionLayout[Size / 2, Size / 2] = RunManager.Player;
@@ -99,13 +100,13 @@ namespace ChessOut.MapSystem
             switch (RunManager.CurrentDifficulity)
             {
                 case Difficulity.Easy:
-                    enemies = GenerateEasyEnemySectionLayout();
+                    enemies = GenerateEasyEnemiesStack();
                     break;
                 case Difficulity.Normal:
-                    enemies = GenerateNormalEnemySectionLayout();
+                    enemies = GenerateNormalEnemiesStack();
                     break;
                 case Difficulity.Hard:
-                    enemies = GenerateHardwEnemySectionLayout();
+                    enemies = GenerateHardEnemiesStack();
                     break;
             }
 
@@ -148,7 +149,7 @@ namespace ChessOut.MapSystem
                 }
             }
         }
-        private Stack<EnemyType> GenerateEasyEnemySectionLayout()
+        private Stack<EnemyType> GenerateEasyEnemiesStack()
         {
             Stack <EnemyType> enemies = new Stack<EnemyType>(4);    
             int chosenLayout = MathUtil.RandomRange(0, 1);
@@ -165,7 +166,7 @@ namespace ChessOut.MapSystem
             return enemies;
 
         }
-        private Stack<EnemyType> GenerateNormalEnemySectionLayout()
+        private Stack<EnemyType> GenerateNormalEnemiesStack()
         {
             Stack<EnemyType> enemies = new Stack<EnemyType>(4);
             int chosenLayout = MathUtil.RandomRange(0, 2);
@@ -186,7 +187,7 @@ namespace ChessOut.MapSystem
             }
             return enemies;
         }
-        private Stack<EnemyType> GenerateHardwEnemySectionLayout()
+        private Stack<EnemyType> GenerateHardEnemiesStack()
         {
             Stack<EnemyType> enemies = new Stack<EnemyType>(4);
             int chosenLayout = MathUtil.RandomRange(0, 2);
